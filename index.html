@@ -8,17 +8,39 @@
       name="description"
       content="Официальный сайт межуниверситетского объединения студенческих инициатив «Новая Орбита»"
     />
+    <meta name="theme-color" content="#06101f" />
+    <link rel="canonical" href="https://ubicoft.github.io/novaya-orbita/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Новая Орбита" />
+    <meta property="og:title" content="Новая Орбита" />
+    <meta
+      property="og:description"
+      content="Официальный сайт межуниверситетского объединения студенческих инициатив «Новая Орбита»"
+    />
+    <meta property="og:url" content="https://ubicoft.github.io/novaya-orbita/" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary" />
     <title>Новая Орбита</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
     <script>
       try {
         var t = localStorage.getItem("novaya-orbita.theme");
         if (t === "winter" || t === "blue" || t === "pink" || t === "green") {
           document.documentElement.dataset.theme = t;
         }
+        var lang = new URLSearchParams(location.search).get("lang");
+        if (lang === "ru" || lang === "en" || lang === "tj") {
+          document.documentElement.lang = lang === "tj" ? "tg" : lang;
+        }
       } catch (e) {}
     </script>
-    <script type="module" crossorigin src="/novaya-orbita/assets/index-kVMkjN6n.js"></script>
-    <link rel="stylesheet" crossorigin href="/novaya-orbita/assets/index-wNSTFeun.css">
+    <script type="module" crossorigin src="/novaya-orbita/assets/index-MiEjeFMW.js"></script>
+    <link rel="stylesheet" crossorigin href="/novaya-orbita/assets/index-BtAT6_hJ.css">
   </head>
   <body>
     <div id="root"></div>
