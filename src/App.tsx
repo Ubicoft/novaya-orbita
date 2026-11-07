@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrandCursor } from "./cursor/BrandCursor";
 import { LocaleProvider } from "./i18n/LocaleProvider";
 import { PageShell } from "./layout/PageShell";
 import { DesignSystemDemo } from "./pages/DesignSystemDemo";
@@ -9,6 +10,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <LocaleProvider>
+        <BrandCursor />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             <Route element={<PageShell />}>

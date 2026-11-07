@@ -1,0 +1,115 @@
+/**
+ * Branded floating cursor — fine pointers only.
+ * Default: accent ring + core. Pointer mode: larger filled orb on interactive.
+ */
+
+.has-brand-cursor,
+.has-brand-cursor * {
+  cursor: none !important;
+}
+
+.brand-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 160ms var(--ease-standard);
+  mix-blend-mode: normal;
+}
+
+.brand-cursor[data-mode="default"],
+.brand-cursor[data-mode="pointer"],
+.brand-cursor[data-mode="text"] {
+  opacity: 1;
+}
+
+.brand-cursor__ring,
+.brand-cursor__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 220ms var(--ease-spring),
+    height 220ms var(--ease-spring),
+    background 220ms var(--ease-standard),
+    border-color 220ms var(--ease-standard),
+    box-shadow 220ms var(--ease-standard),
+    opacity 180ms var(--ease-standard);
+}
+
+.brand-cursor__ring {
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 75%, white 25%);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-soft) 55%, transparent),
+    0 0 18px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.brand-cursor__dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  background: var(--accent);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* Interactive hover / pointer variant */
+.brand-cursor[data-mode="pointer"] .brand-cursor__ring {
+  width: 2.55rem;
+  height: 2.55rem;
+  border-color: transparent;
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent) 45%, white 20%),
+    0 0 28px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.brand-cursor[data-mode="pointer"] .brand-cursor__dot {
+  width: 0.72rem;
+  height: 0.72rem;
+  background: color-mix(in srgb, var(--accent) 70%, white 30%);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+.brand-cursor[data-mode="text"] .brand-cursor__ring {
+  width: 0.2rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  border: none;
+  background: color-mix(in srgb, var(--accent) 85%, white 15%);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.brand-cursor[data-mode="text"] .brand-cursor__dot {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.brand-cursor--down .brand-cursor__ring {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.brand-cursor--down[data-mode="pointer"] .brand-cursor__ring {
+  width: 2rem;
+  height: 2rem;
+}
+
+.brand-cursor--down .brand-cursor__dot {
+  transform: translate(-50%, -50%) scale(0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-cursor__ring,
+  .brand-cursor__dot {
+    transition: none;
+  }
+}
