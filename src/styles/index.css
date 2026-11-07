@@ -30,6 +30,8 @@
 @import "../pages/DesignSystemDemo.css";
 @import "../pages/Home/HomePage.css";
 @import "../pages/About/AboutPage.css";
+@import "../pages/catalog/Catalog.css";
+@import "../pages/Admin/Admin.css";
 
 /* Cursor + stronger hover/selected — after layout so they win */
 @import "../cursor/BrandCursor.css";

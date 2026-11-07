@@ -144,6 +144,123 @@ export type Dictionary = {
       button: string;
     };
   };
+  catalog: {
+    all: string;
+    search: string;
+    filters: string;
+    status: string;
+    category: string;
+    direction: string;
+    role: string;
+    format: string;
+    open: string;
+    back: string;
+    emptyTitle: string;
+    emptyBody: string;
+    notFoundTitle: string;
+    notFoundBody: string;
+    date: string;
+    place: string;
+    launch: string;
+    progress: string;
+    goals: string;
+    program: string;
+    organizers: string;
+    participation: string;
+    results: string;
+    idea: string;
+    problem: string;
+    workAreas: string;
+    stages: string;
+    team: string;
+    joinProject: string;
+    university: string;
+    interests: string;
+    profiles: string;
+    cooperation: string;
+    website: string;
+    publishedAt: string;
+    media: string;
+  };
+  eventsPage: {
+    title: string;
+    lead: string;
+  };
+  projectsPage: {
+    title: string;
+    lead: string;
+  };
+  membersPage: {
+    title: string;
+    lead: string;
+    disclaimer: string;
+  };
+  partnersPage: {
+    title: string;
+    lead: string;
+    invite: string;
+  };
+  newsPage: {
+    title: string;
+    lead: string;
+  };
+  contactsPage: {
+    title: string;
+    lead: string;
+    formTitle: string;
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    send: string;
+    success: string;
+    error: string;
+  };
+  joinPage: {
+    title: string;
+    lead: string;
+    formTitle: string;
+    fullName: string;
+    university: string;
+    faculty: string;
+    course: string;
+    email: string;
+    contact: string;
+    directions: string;
+    experience: string;
+    skills: string;
+    motivation: string;
+    extra: string;
+    cvUrl: string;
+    consent: string;
+    submit: string;
+    success: string;
+    error: string;
+    note: string;
+  };
+  admin: {
+    title: string;
+    unlock: string;
+    password: string;
+    enter: string;
+    logout: string;
+    hint: string;
+    navOverview: string;
+    navEvents: string;
+    navProjects: string;
+    navMembers: string;
+    navPartners: string;
+    navNews: string;
+    navContacts: string;
+    navFeedback: string;
+    navApplications: string;
+    create: string;
+    save: string;
+    remove: string;
+    published: string;
+    draft: string;
+    empty: string;
+  };
   pages: Record<
     NavKey,
     {
