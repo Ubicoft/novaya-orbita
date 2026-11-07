@@ -28,6 +28,7 @@
 @import "../layout/Footer.css";
 @import "../layout/PageShell.css";
 @import "../pages/DesignSystemDemo.css";
+@import "../pages/Home/HomePage.css";
 
 /* Cursor + stronger hover/selected — after layout so they win */
 @import "../cursor/BrandCursor.css";
