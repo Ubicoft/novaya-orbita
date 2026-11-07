@@ -39,16 +39,6 @@ function readInitialLocale(): Locale {
   return DEFAULT_LOCALE;
 }
 
-function syncLangParam(locale: Locale) {
-  try {
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", locale);
-    window.history.replaceState({}, "", url.toString());
-  } catch {
-    /* ignore */
-  }
-}
-
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(() => readInitialLocale());
 
@@ -59,12 +49,10 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     } catch {
       /* ignore */
     }
-    syncLangParam(next);
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale === "tj" ? "tg" : locale;
-    syncLangParam(locale);
   }, [locale]);
 
   const value = useMemo<LocaleContextValue>(

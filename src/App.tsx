@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { BrandCursor } from "./cursor/BrandCursor";
 import { ContentProvider } from "./content/ContentProvider";
 import { LocaleProvider } from "./i18n/LocaleProvider";
+import { LocaleUrlSync } from "./i18n/LocaleUrlSync";
 import { PageShell } from "./layout/PageShell";
 import { AdminPage } from "./pages/Admin/AdminPage";
 import { AboutPage } from "./pages/About/AboutPage";
@@ -29,6 +30,7 @@ export default function App() {
         <ContentProvider>
           <BrandCursor />
           <BrowserRouter basename={import.meta.env.BASE_URL}>
+            <LocaleUrlSync />
             <Routes>
               <Route path="admin/*" element={<AdminPage />} />
               <Route path="design-system" element={<DesignSystemDemo />} />
