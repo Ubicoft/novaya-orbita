@@ -1,0 +1,77 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.toggle__track {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-300);
+  border: 1.5px solid transparent;
+  transition: var(--motion-color), var(--motion-shadow);
+  flex-shrink: 0;
+}
+
+.toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: var(--color-neutral-0);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-50%);
+  transition: var(--motion-transform);
+}
+
+.toggle__input:checked + .toggle__track {
+  background: var(--color-blue-600);
+}
+
+.toggle__input:checked + .toggle__track .toggle__thumb {
+  transform: translate(1.2rem, -50%);
+}
+
+.toggle__input:focus-visible + .toggle__track {
+  box-shadow: var(--shadow-focus);
+}
+
+.toggle__input:disabled + .toggle__track {
+  background: var(--color-neutral-200);
+  cursor: not-allowed;
+}
+
+.toggle__input:disabled ~ .toggle__label {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.toggle:has(.toggle__input:disabled) {
+  cursor: not-allowed;
+}
+
+.toggle__label {
+  font-size: var(--text-body-size);
+  color: var(--color-text-primary);
+}
+
+.toggle__hint {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-body-sm-size);
+}

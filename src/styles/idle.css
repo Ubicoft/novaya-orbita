@@ -1,0 +1,121 @@
+/**
+ * Subtle idle presence on interactive controls — no click required.
+ * Respects prefers-reduced-motion.
+ */
+
+.ui-idle {
+  position: relative;
+  animation: ui-breathe 3.6s ease-in-out infinite;
+}
+
+.ui-idle--cta {
+  animation: ui-cta-pulse 2.8s ease-in-out infinite;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 0 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.ui-idle--cta::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 45%,
+    transparent 70%
+  );
+  background-size: 220% 100%;
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
+  animation: ui-shimmer 4.5s ease-in-out infinite;
+}
+
+.glass-chip__btn.ui-idle {
+  animation: ui-chip-glow 3.8s ease-in-out infinite;
+}
+
+.glass-header__menu-toggle.ui-idle {
+  animation: ui-icon-breathe 3.2s ease-in-out infinite;
+}
+
+.shell-btn--primary.ui-idle--cta:hover,
+.glass-chip__btn.ui-idle:hover,
+.glass-header__menu-toggle.ui-idle:hover,
+.nav-more__button.ui-idle:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ui-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+  }
+}
+
+@keyframes ui-cta-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 0 0 0 0 rgba(255, 255, 255, 0.08);
+  }
+  50% {
+    transform: translateY(-1px) scale(1.015);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes ui-shimmer {
+  0%,
+  100% {
+    background-position: 120% 0;
+    opacity: 0.25;
+  }
+  50% {
+    background-position: -20% 0;
+    opacity: 0.55;
+  }
+}
+
+@keyframes ui-chip-glow {
+  0%,
+  100% {
+    border-color: var(--glass-border);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    border-color: var(--glass-highlight);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+}
+
+@keyframes ui-icon-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    border-color: var(--glass-border);
+  }
+  50% {
+    transform: scale(1.04);
+    border-color: var(--glass-highlight);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-idle,
+  .ui-idle--cta,
+  .ui-idle--cta::after,
+  .glass-chip__btn.ui-idle,
+  .glass-header__menu-toggle.ui-idle {
+    animation: none !important;
+  }
+
+  .ui-idle--cta::after {
+    display: none;
+  }
+}

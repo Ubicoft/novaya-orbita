@@ -1,0 +1,46 @@
+.link {
+  color: var(--color-text-link);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  transition: var(--motion-color);
+}
+
+.link:hover {
+  color: var(--color-text-link-hover);
+}
+
+.link:active {
+  color: var(--color-blue-900);
+}
+
+.link--subtle {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.link--subtle:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+.link--nav {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: var(--text-nav-size);
+  font-weight: var(--text-nav-weight);
+  letter-spacing: var(--text-nav-tracking);
+}
+
+.link--nav:hover {
+  color: var(--color-blue-700);
+}
+
+.link--disabled,
+.link[aria-disabled="true"] {
+  color: var(--color-text-disabled);
+  pointer-events: none;
+  text-decoration: none;
+  cursor: not-allowed;
+}

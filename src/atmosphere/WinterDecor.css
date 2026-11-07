@@ -1,0 +1,200 @@
+.winter-decor {
+  position: fixed;
+  right: max(0.25rem, env(safe-area-inset-right));
+  bottom: max(0.25rem, env(safe-area-inset-bottom));
+  z-index: 4;
+  pointer-events: none;
+  width: min(21rem, 52vw);
+  height: auto;
+  filter: drop-shadow(0 18px 36px rgba(8, 24, 48, 0.4));
+}
+
+.winter-decor__warm-glow {
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -5%;
+  height: 75%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 65%,
+    rgba(251, 191, 36, 0.55) 0%,
+    rgba(251, 113, 133, 0.28) 32%,
+    rgba(147, 197, 253, 0.18) 55%,
+    transparent 72%
+  );
+  animation: warm-glow-breathe 3.8s ease-in-out infinite;
+  z-index: 0;
+}
+
+.winter-decor__ambient {
+  position: absolute;
+  inset: -8% -12% 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 38%,
+    rgba(253, 230, 138, 0.5) 0%,
+    rgba(244, 114, 182, 0.22) 28%,
+    rgba(125, 211, 252, 0.28) 48%,
+    transparent 70%
+  );
+  animation: ambient-breathe 3.4s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Extra readable color-music halo around the tree */
+.winter-decor__music-halo {
+  position: absolute;
+  inset: 8% 2% 12%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(252, 165, 165, 0.35),
+    rgba(253, 230, 138, 0.4),
+    rgba(134, 239, 172, 0.32),
+    rgba(147, 197, 253, 0.4),
+    rgba(240, 171, 252, 0.35),
+    rgba(252, 165, 165, 0.35)
+  );
+  filter: blur(22px);
+  opacity: 0.55;
+  animation: music-halo-spin 8s linear infinite, music-halo-pulse 2.8s ease-in-out infinite;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
+.winter-decor__svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.winter-decor__star {
+  animation: star-twinkle 3.2s ease-in-out infinite;
+  transform-origin: 110px 22px;
+  transform-box: fill-box;
+}
+
+.winter-decor__light {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: light-pulse 1.9s ease-in-out infinite;
+}
+
+.winter-decor__light--a {
+  fill: var(--tree-light-a);
+  animation-delay: 0s;
+}
+.winter-decor__light--b {
+  fill: var(--tree-light-b);
+  animation-delay: 0.28s;
+}
+.winter-decor__light--c {
+  fill: var(--tree-light-c);
+  animation-delay: 0.56s;
+}
+.winter-decor__light--d {
+  fill: var(--tree-light-d);
+  animation-delay: 0.84s;
+}
+.winter-decor__light--e {
+  fill: var(--tree-light-e);
+  animation-delay: 1.12s;
+}
+
+.winter-decor__baubles circle {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes light-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 18px currentColor);
+  }
+}
+
+@keyframes ambient-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes warm-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+  }
+}
+
+@keyframes music-halo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes music-halo-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px #fde68a);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.14);
+    filter: drop-shadow(0 0 16px #fbbf24) drop-shadow(0 0 28px #f59e0b);
+  }
+}
+
+@media (max-width: 639px) {
+  .winter-decor {
+    width: min(13.5rem, 56vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .winter-decor__ambient,
+  .winter-decor__warm-glow,
+  .winter-decor__music-halo,
+  .winter-decor__light,
+  .winter-decor__star {
+    animation: none;
+  }
+
+  .winter-decor__light {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  .winter-decor__music-halo {
+    opacity: 0.45;
+  }
+}
