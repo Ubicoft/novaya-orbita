@@ -3,6 +3,7 @@ import { BrandCursor } from "./cursor/BrandCursor";
 import { LocaleProvider } from "./i18n/LocaleProvider";
 import { PageShell } from "./layout/PageShell";
 import { DesignSystemDemo } from "./pages/DesignSystemDemo";
+import { AboutPage } from "./pages/About/AboutPage";
 import { HomePage } from "./pages/Home/HomePage";
 import { StubPage } from "./pages/StubPage";
 import { ThemeProvider } from "./theme/ThemeProvider";
@@ -16,7 +17,7 @@ export default function App() {
           <Routes>
             <Route element={<PageShell />}>
               <Route index element={<HomePage />} />
-              <Route path="about" element={<StubPage page="about" />} />
+              <Route path="about" element={<AboutPage />} />
               <Route path="directions" element={<StubPage page="directions" />} />
               <Route path="events" element={<StubPage page="events" />} />
               <Route path="projects" element={<StubPage page="projects" />} />

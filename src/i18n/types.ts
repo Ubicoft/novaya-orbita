@@ -92,6 +92,58 @@ export type Dictionary = {
       cta: string;
     };
   };
+  aboutPage: {
+    intro: {
+      title: string;
+      lead: string;
+    };
+    history: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      note: string;
+    };
+    mission: {
+      eyebrow: string;
+      title: string;
+      statement: string;
+    };
+    goals: {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      items: Array<{ id: string; title: string }>;
+    };
+    values: {
+      eyebrow: string;
+      title: string;
+      items: Array<{ id: string; title: string; text: string }>;
+    };
+    principles: {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      items: Array<{ id: string; title: string; text: string }>;
+    };
+    structure: {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      note: string;
+      roles: Array<{ id: string; title: string; text: string }>;
+    };
+    interuni: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      points: Array<{ title: string; text: string }>;
+    };
+    cta: {
+      title: string;
+      lead: string;
+      button: string;
+    };
+  };
   pages: Record<
     NavKey,
     {

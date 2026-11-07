@@ -148,6 +148,95 @@ export const en: Dictionary = {
       cta: "Join New Orbit",
     },
   },
+  aboutPage: {
+    intro: {
+      title: "About New Orbit",
+      lead: "An inter-university union of student initiatives — a space where ideas find teams, and students from different universities work together on projects that matter beyond a single campus.",
+    },
+    history: {
+      eyebrow: "History",
+      title: "Where the idea began",
+      body: "New Orbit grew from the need to connect active students and give them a shared environment for inter-university initiatives — from educational formats to civic projects. The initiative starts among students of the Russian-Tajik (Slavonic) University and is conceived from the outset as wider than one faculty or campus — an open orbit of collaboration.",
+      note: "This block will grow as the union develops. An official founding date and event chronicle will appear after they are confirmed.",
+    },
+    mission: {
+      eyebrow: "Mission",
+      title: "Why we exist",
+      statement:
+        "To create an open space where active students unite, grow initiatives, deliver socially meaningful projects, and build cooperation between universities.",
+    },
+    goals: {
+      eyebrow: "Goals",
+      title: "What we aim for",
+      lead: "Goals set the direction of the union’s work — clear tasks, without empty pathos.",
+      items: [
+        { id: "initiative", title: "Grow student initiative and autonomy" },
+        { id: "projects", title: "Create conditions for socially useful projects" },
+        { id: "potential", title: "Unlock intellectual, educational, and professional potential" },
+        { id: "campus", title: "Organise inter-university collaboration" },
+        { id: "events", title: "Run educational, academic, cultural, and civic events" },
+        { id: "skills", title: "Develop leadership, communication, and teamwork" },
+        { id: "intl", title: "Expand student participation in international initiatives" },
+        { id: "support", title: "Support new student ideas and projects" },
+      ],
+    },
+    values: {
+      eyebrow: "Values",
+      title: "What shapes our culture",
+      items: [
+        { id: "initiative", title: "Initiative", text: "We value people who propose ideas and take the first step." },
+        { id: "openness", title: "Openness", text: "To new people, formats, and collaboration — without closed circles." },
+        { id: "coop", title: "Cooperation", text: "Strong results come from teams, not solo races." },
+        { id: "responsibility", title: "Responsibility", text: "Promises, deadlines, and quality of work matter." },
+        { id: "growth", title: "Growth", text: "Every project is a chance to learn and get stronger." },
+        { id: "autonomy", title: "Autonomy", text: "Students shape initiatives and lead them to results." },
+        { id: "equity", title: "Equal opportunity", text: "Participation does not depend on status or “connections”." },
+        { id: "respect", title: "Respect for views", text: "Different ideas and positions are part of dialogue, not a threat." },
+      ],
+    },
+    principles: {
+      eyebrow: "Principles",
+      title: "How we work",
+      lead: "Principles fix the rules of play: voluntary, open, and not tied to a single faculty or university.",
+      items: [
+        { id: "voluntary", title: "Voluntary participation", text: "People join by choice and stay while there is meaning and contribution." },
+        { id: "open-uni", title: "Open to different universities", text: "Students from various universities can take part in shared work." },
+        { id: "self-init", title: "Self-driven initiatives", text: "Ideas are formulated and developed by participants themselves." },
+        { id: "team", title: "Team delivery", text: "Projects run together — with roles, a plan, and shared responsibility." },
+        { id: "commit", title: "Commitments kept", text: "We deliver on agreements; if plans change, we do it transparently." },
+        { id: "partners", title: "Working with organisations", text: "We partner with educational and civic organisations where it strengthens the work." },
+        { id: "transparency", title: "Transparent processes", text: "Decisions and structure should be clear to participants." },
+      ],
+    },
+    structure: {
+      eyebrow: "Structure",
+      title: "Proposed organisational model",
+      lead: "Below is a working role map that helps explain how the union may be organised. It is not a final approved structure.",
+      note: "Leadership and structural details will be refined in organisational documents. This block is designed for later editing.",
+      roles: [
+        { id: "leadership", title: "Overall leadership", text: "Sets strategic priorities and keeps the union coherent." },
+        { id: "coordination", title: "Coordination team", text: "Aligns directions, calendar, and operational support." },
+        { id: "leads", title: "Direction leads", text: "Guide thematic lines of work and expertise." },
+        { id: "project", title: "Project coordinators", text: "Own specific initiatives from concept to delivery." },
+        { id: "members", title: "Members", text: "Students who propose ideas, join teams, and deliver projects." },
+      ],
+    },
+    interuni: {
+      eyebrow: "Inter-university identity",
+      title: "Wider than one campus",
+      body: "New Orbit is built with the prospect of students from different universities in Tajikistan taking part. RTSU is a starting point, not a boundary. We do not claim that universities are already official partners: the emphasis is on openness to collaboration and growing inter-university ties.",
+      points: [
+        { title: "Open entry", text: "Students from different universities can join initiatives and teams." },
+        { title: "No single-university monopoly", text: "The union is not locked to one faculty or campus." },
+        { title: "Partnerships as they mature", text: "Formal partnerships and joint formats appear as confirmed work grows." },
+      ],
+    },
+    cta: {
+      title: "Want to be part of this orbit?",
+      lead: "Learn how to join the union and bring your initiative.",
+      button: "Join the union",
+    },
+  },
   pages: {
     home: {
       title: "Home",
