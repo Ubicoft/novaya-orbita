@@ -1,16 +1,12 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { ROUTES } from "../../i18n";
 import { useLocale } from "../../i18n/LocaleProvider";
 
 export function AboutPage() {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const a = t.aboutPage;
 
-  useEffect(() => {
-    document.title = `${t.pages.about.title} · ${t.meta.siteName}`;
-  }, [t.pages.about.title, t.meta.siteName, locale]);
 
   return (
     <div className="about">

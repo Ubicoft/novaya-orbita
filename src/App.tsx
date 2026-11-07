@@ -7,6 +7,7 @@ import { AdminPage } from "./pages/Admin/AdminPage";
 import { AboutPage } from "./pages/About/AboutPage";
 import { ContactsPage } from "./pages/Contacts/ContactsPage";
 import { DesignSystemDemo } from "./pages/DesignSystemDemo";
+import { DirectionsPage } from "./pages/Directions/DirectionsPage";
 import { EventDetailPage } from "./pages/Events/EventDetailPage";
 import { EventsPage } from "./pages/Events/EventsPage";
 import { HomePage } from "./pages/Home/HomePage";
@@ -19,7 +20,6 @@ import { PartnerDetailPage } from "./pages/Partners/PartnerDetailPage";
 import { PartnersPage } from "./pages/Partners/PartnersPage";
 import { ProjectDetailPage } from "./pages/Projects/ProjectDetailPage";
 import { ProjectsPage } from "./pages/Projects/ProjectsPage";
-import { StubPage } from "./pages/StubPage";
 import { ThemeProvider } from "./theme/ThemeProvider";
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
               <Route element={<PageShell />}>
                 <Route index element={<HomePage />} />
                 <Route path="about" element={<AboutPage />} />
-                <Route path="directions" element={<StubPage page="directions" />} />
+                <Route path="directions" element={<DirectionsPage />} />
                 <Route path="events" element={<EventsPage />} />
                 <Route path="events/:slug" element={<EventDetailPage />} />
                 <Route path="projects" element={<ProjectsPage />} />

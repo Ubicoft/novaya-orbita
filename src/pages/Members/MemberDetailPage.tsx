@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
 import { loc } from "../../content/i18nText";
 import { MEMBER_ROLE_LABELS, PROJECT_DIRECTION_LABELS } from "../../content/labels";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { Seo } from "../../seo/Seo";
 
 export function MemberDetailPage() {
   const { slug = "" } = useParams();
@@ -12,16 +12,12 @@ export function MemberDetailPage() {
   const { store } = useContent();
   const item = store.members.find((m) => m.slug === slug && m.published);
 
-  useEffect(() => {
-    document.title = item
-      ? `${loc(item.name, locale)} · ${t.meta.siteName}`
-      : `${t.catalog.notFoundTitle} · ${t.meta.siteName}`;
-  }, [item, locale, t]);
 
   if (!item) {
     return (
       <div className="cat cat-detail">
         <Container width="wide">
+          <Seo title={`${t.catalog.notFoundTitle} · ${t.meta.siteName}`} noindex />
           <Link to="/members" className="cat-detail__back">
             {t.catalog.back}
           </Link>
@@ -35,7 +31,11 @@ export function MemberDetailPage() {
   return (
     <div className="cat cat-detail">
       <Container width="wide">
-        <Link to="/members" className="cat-detail__back">
+        <Seo
+          title={`${loc(item.name, locale)} · ${t.meta.siteName}`}
+          description={loc(item.bio, locale) || MEMBER_ROLE_LABELS[item.role][locale]}
+        />
+      <Link to="/members" className="cat-detail__back">
           {t.catalog.back}
         </Link>
         <div className="cat-card__meta">
@@ -55,7 +55,7 @@ export function MemberDetailPage() {
         </p>
         {item.photoUrl ? (
           <div className="cat-detail__cover" style={{ aspectRatio: "4 / 3", maxWidth: "28rem" }}>
-            <img src={item.photoUrl} alt="" />
+            <img src={item.photoUrl} alt="" loading="lazy" decoding="async" />
           </div>
         ) : null}
         {loc(item.bio, locale) ? (

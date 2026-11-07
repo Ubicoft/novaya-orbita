@@ -13,6 +13,7 @@ import {
   type ProjectRecord,
 } from "../../content/types";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { Seo } from "../../seo/Seo";
 
 export function AdminPage() {
   const { t } = useLocale();
@@ -23,6 +24,7 @@ export function AdminPage() {
   if (!admin) {
     return (
       <div className="admin-shell">
+        <Seo title={`${t.admin.unlock} · ${t.meta.siteName}`} noindex />
         <form
           className="admin-login"
           onSubmit={(e) => {
@@ -54,6 +56,7 @@ export function AdminPage() {
 
   return (
     <div className="admin-shell">
+      <Seo title={`${t.admin.title} · ${t.meta.siteName}`} noindex />
       <aside className="admin-nav">
         <p className="admin-nav__title">{t.admin.title}</p>
         <NavLink to="/admin" end className={navClass}>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
@@ -15,9 +15,6 @@ export function NewsPage() {
   const [format, setFormat] = useState<"all" | NewsFormat>("all");
   const [q, setQ] = useState("");
 
-  useEffect(() => {
-    document.title = `${t.newsPage.title} · ${t.meta.siteName}`;
-  }, [t, locale]);
 
   const items = useMemo(() => {
     return store.news
@@ -77,7 +74,7 @@ export function NewsPage() {
                   style={i === 0 ? { gridColumn: "1 / -1" } : undefined}
                 >
                   <div className="cat-card__cover">
-                    {item.coverUrl ? <img src={item.coverUrl} alt="" /> : null}
+                    {item.coverUrl ? <img src={item.coverUrl} alt="" loading="lazy" decoding="async" /> : null}
                   </div>
                   <div className="cat-card__meta">
                     <span className="cat-badge">{NEWS_FORMAT_LABELS[item.format][locale]}</span>

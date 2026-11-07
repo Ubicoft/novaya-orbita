@@ -145,7 +145,7 @@ export function Header() {
         <div className="glass-header__bar">
           <BrandLogo size="header" className="ui-idle" />
 
-          <nav className="glass-header__nav" aria-label="Primary">
+          <nav className="glass-header__nav" aria-label={t.header.primaryNav}>
             {PRIMARY_NAV.map((key) => renderNavLink(key))}
             <div className="glass-header__nav--wide-only">
               {SECONDARY_NAV.map((key) => renderNavLink(key))}
@@ -300,7 +300,7 @@ export function Header() {
             </button>
           </div>
 
-          <nav className="mobile-nav__list" aria-label="Mobile">
+          <nav className="mobile-nav__list" aria-label={t.header.mobileNav}>
             {ALL_NAV.filter((k) => k !== "join").map((key) =>
               renderNavLink(key, mobileNavClass),
             )}

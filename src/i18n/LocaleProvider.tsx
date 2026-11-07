@@ -26,8 +26,11 @@ type LocaleContextValue = {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-function readStoredLocale(): Locale {
+function readInitialLocale(): Locale {
+  if (typeof window === "undefined") return DEFAULT_LOCALE;
   try {
+    const param = new URLSearchParams(window.location.search).get("lang");
+    if (isLocale(param)) return param;
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
     if (isLocale(stored)) return stored;
   } catch {
@@ -36,11 +39,18 @@ function readStoredLocale(): Locale {
   return DEFAULT_LOCALE;
 }
 
+function syncLangParam(locale: Locale) {
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", locale);
+    window.history.replaceState({}, "", url.toString());
+  } catch {
+    /* ignore */
+  }
+}
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window === "undefined") return DEFAULT_LOCALE;
-    return readStoredLocale();
-  });
+  const [locale, setLocaleState] = useState<Locale>(() => readInitialLocale());
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);
@@ -49,10 +59,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     } catch {
       /* ignore */
     }
+    syncLangParam(next);
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = locale === "tj" ? "tg" : locale;
+    syncLangParam(locale);
   }, [locale]);
 
   const value = useMemo<LocaleContextValue>(
@@ -65,9 +77,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     [locale, setLocale],
   );
 
-  return (
-    <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
-  );
+  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
 export function useLocale() {

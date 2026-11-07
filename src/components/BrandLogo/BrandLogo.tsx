@@ -55,12 +55,12 @@ export function BrandLogo({
     <img
       src={src}
       alt={t.meta.siteName}
-      width={1254}
-      height={1254}
+      width={640}
+      height={640}
       decoding="async"
+      fetchPriority={size === "header" ? "high" : "low"}
       draggable={false}
-    />
-  );
+    />  );
 
   if (to === null) {
     return <span className={classes}>{image}</span>;

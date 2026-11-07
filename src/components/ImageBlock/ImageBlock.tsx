@@ -32,7 +32,14 @@ export function ImageBlock({
     <figure>
       <div className={wrapClass}>
         {src ? (
-          <img className="image-block__media" src={src} alt={alt} {...rest} />
+          <img
+            className="image-block__media"
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            {...rest}
+          />
         ) : (
           <div className="image-block__placeholder">
             <div>

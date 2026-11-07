@@ -23,6 +23,9 @@ export const en: Dictionary = {
     more: "More",
     language: "Language",
     theme: "Theme",
+    skipToContent: "Skip to content",
+    primaryNav: "Primary navigation",
+    mobileNav: "Mobile navigation",
   },
   themes: {
     winter: "Winter",
@@ -79,6 +82,8 @@ export const en: Dictionary = {
       title: "What the union works on",
       lead: "Seven directions frame our work. Each leads to the directions section — detail will grow as content is published.",
       more: "All directions",
+      relatedNote:
+        "Detailed direction pages will grow with confirmed programmes. Explore related sections:",
       items: [
         {
           id: "education",
@@ -304,10 +309,12 @@ export const en: Dictionary = {
     formTitle: "Write to us",
     name: "Name",
     email: "Email",
+    phone: "Phone",
     subject: "Subject",
     message: "Message",
     send: "Send",
-    success: "Message sent. A reply will come to your email once the team processes it.",
+    success:
+      "Message saved locally in this browser for the admin panel. There is no email delivery — static hosting has no server.",
     error: "Check the fields and try again.",
   },
   joinPage: {
@@ -328,9 +335,10 @@ export const en: Dictionary = {
     cvUrl: "CV link (optional)",
     consent: "I consent to processing of personal data for reviewing this application",
     submit: "Submit application",
-    success: "Application received. There is no auto-accept — the team reviews each request manually.",
+    success:
+      "Application saved locally in this browser for the admin panel. There is no auto-accept and no email notification from the site.",
     error: "Fill required fields and confirm consent.",
-    note: "Application personal data is visible only to admins and is never published on the site.",
+    note: "Application personal data stays in this browser’s local storage for local admins and is never published on the site.",
   },
   admin: {
     title: "Admin panel",

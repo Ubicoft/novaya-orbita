@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
@@ -17,9 +17,6 @@ export function MembersPage() {
   const [direction, setDirection] = useState<"all" | ProjectDirection>("all");
   const [q, setQ] = useState("");
 
-  useEffect(() => {
-    document.title = `${t.membersPage.title} · ${t.meta.siteName}`;
-  }, [t, locale]);
 
   const items = useMemo(() => {
     return store.members
@@ -91,7 +88,7 @@ export function MembersPage() {
               {items.map((item) => (
                 <Link key={item.id} to={`/members/${item.slug}`} className="cat-card" data-cursor="pointer">
                   <div className="cat-card__cover" style={{ aspectRatio: "1 / 1", maxWidth: "9rem" }}>
-                    {item.photoUrl ? <img src={item.photoUrl} alt="" /> : null}
+                    {item.photoUrl ? <img src={item.photoUrl} alt="" loading="lazy" decoding="async" /> : null}
                   </div>
                   <div className="cat-card__meta">
                     <span className="cat-badge">{MEMBER_ROLE_LABELS[item.role][locale]}</span>

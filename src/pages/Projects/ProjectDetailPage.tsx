@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
 import { formatDate, loc } from "../../content/i18nText";
 import { PROJECT_DIRECTION_LABELS, PROJECT_STATUS_LABELS } from "../../content/labels";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { Seo } from "../../seo/Seo";
 
 export function ProjectDetailPage() {
   const { slug = "" } = useParams();
@@ -12,16 +12,12 @@ export function ProjectDetailPage() {
   const { store } = useContent();
   const item = store.projects.find((p) => p.slug === slug && p.published);
 
-  useEffect(() => {
-    document.title = item
-      ? `${loc(item.title, locale)} · ${t.meta.siteName}`
-      : `${t.catalog.notFoundTitle} · ${t.meta.siteName}`;
-  }, [item, locale, t]);
 
   if (!item) {
     return (
       <div className="cat cat-detail">
         <Container width="wide">
+          <Seo title={`${t.catalog.notFoundTitle} · ${t.meta.siteName}`} noindex />
           <Link to="/projects" className="cat-detail__back">
             {t.catalog.back}
           </Link>
@@ -46,7 +42,8 @@ export function ProjectDetailPage() {
   return (
     <div className="cat cat-detail">
       <Container width="wide">
-        <Link to="/projects" className="cat-detail__back">
+        <Seo title={`${loc(item.title, locale)} · ${t.meta.siteName}`} description={loc(item.summary, locale) || t.meta.shortDescription} />
+      <Link to="/projects" className="cat-detail__back">
           {t.catalog.back}
         </Link>
         <div className="cat-card__meta">
@@ -66,7 +63,7 @@ export function ProjectDetailPage() {
           </div>
         ) : null}
         <div className="cat-detail__cover">
-          {item.coverUrl ? <img src={item.coverUrl} alt="" /> : null}
+          {item.coverUrl ? <img src={item.coverUrl} alt="" loading="lazy" decoding="async" /> : null}
         </div>
         {blocks.map((b) => (
           <div key={b.title} className="cat-detail__block">

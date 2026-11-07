@@ -17,9 +17,8 @@ export function ContactsPage() {
   const started = useRef(Date.now());
 
   useEffect(() => {
-    document.title = `${t.contactsPage.title} · ${t.meta.siteName}`;
     started.current = Date.now();
-  }, [t, locale]);
+  }, [locale]);
 
   const c = store.contacts;
   const hasPublic =
@@ -64,8 +63,16 @@ export function ContactsPage() {
             <div className="cat-detail__block">
               {hasPublic ? (
                 <>
-                  {loc(c.email, locale) ? <p>Email: {loc(c.email, locale)}</p> : null}
-                  {loc(c.phone, locale) ? <p>Tel: {loc(c.phone, locale)}</p> : null}
+                  {loc(c.email, locale) ? (
+                    <p>
+                      {t.contactsPage.email}: {loc(c.email, locale)}
+                    </p>
+                  ) : null}
+                  {loc(c.phone, locale) ? (
+                    <p>
+                      {t.contactsPage.phone}: {loc(c.phone, locale)}
+                    </p>
+                  ) : null}
                   {loc(c.address, locale) ? <p>{loc(c.address, locale)}</p> : null}
                   {loc(c.hours, locale) ? <p>{loc(c.hours, locale)}</p> : null}
                 </>

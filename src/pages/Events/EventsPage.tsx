@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
@@ -17,9 +17,6 @@ export function EventsPage() {
   const [status, setStatus] = useState<"all" | EventStatus>("all");
   const [q, setQ] = useState("");
 
-  useEffect(() => {
-    document.title = `${t.eventsPage.title} · ${t.meta.siteName}`;
-  }, [t, locale]);
 
   const items = useMemo(() => {
     return store.events
@@ -90,7 +87,7 @@ export function EventsPage() {
               {items.map((item) => (
                 <Link key={item.id} to={`/events/${item.slug}`} className="cat-card" data-cursor="pointer">
                   <div className="cat-card__cover">
-                    {item.coverUrl ? <img src={item.coverUrl} alt="" /> : null}
+                    {item.coverUrl ? <img src={item.coverUrl} alt="" loading="lazy" decoding="async" /> : null}
                   </div>
                   <div className="cat-card__meta">
                     <span className="cat-badge">{EVENT_CATEGORY_LABELS[item.category][locale]}</span>

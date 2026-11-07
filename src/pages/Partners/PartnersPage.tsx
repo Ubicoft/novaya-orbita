@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
@@ -16,9 +16,6 @@ export function PartnersPage() {
   const [category, setCategory] = useState<"all" | PartnerCategory>("all");
   const [q, setQ] = useState("");
 
-  useEffect(() => {
-    document.title = `${t.partnersPage.title} · ${t.meta.siteName}`;
-  }, [t, locale]);
 
   const items = useMemo(() => {
     return store.partners
@@ -75,7 +72,7 @@ export function PartnersPage() {
               {items.map((item) => (
                 <Link key={item.id} to={`/partners/${item.slug}`} className="cat-card" data-cursor="pointer">
                   <div className="cat-card__cover" style={{ aspectRatio: "3 / 2" }}>
-                    {item.logoUrl ? <img src={item.logoUrl} alt="" /> : null}
+                    {item.logoUrl ? <img src={item.logoUrl} alt="" loading="lazy" decoding="async" /> : null}
                   </div>
                   <div className="cat-card__meta">
                     <span className="cat-badge">{PARTNER_CATEGORY_LABELS[item.category][locale]}</span>

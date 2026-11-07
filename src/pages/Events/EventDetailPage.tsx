@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
 import { formatDate, loc } from "../../content/i18nText";
 import { EVENT_CATEGORY_LABELS, EVENT_STATUS_LABELS } from "../../content/labels";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { Seo } from "../../seo/Seo";
 
 export function EventDetailPage() {
   const { slug = "" } = useParams();
@@ -12,16 +12,12 @@ export function EventDetailPage() {
   const { store } = useContent();
   const item = store.events.find((e) => e.slug === slug && e.published);
 
-  useEffect(() => {
-    document.title = item
-      ? `${loc(item.title, locale)} · ${t.meta.siteName}`
-      : `${t.catalog.notFoundTitle} · ${t.meta.siteName}`;
-  }, [item, locale, t]);
 
   if (!item) {
     return (
       <div className="cat cat-detail">
         <Container width="wide">
+          <Seo title={`${t.catalog.notFoundTitle} · ${t.meta.siteName}`} noindex />
           <Link to="/events" className="cat-detail__back">
             {t.catalog.back}
           </Link>
@@ -43,7 +39,8 @@ export function EventDetailPage() {
   return (
     <div className="cat cat-detail">
       <Container width="wide">
-        <Link to="/events" className="cat-detail__back">
+        <Seo title={`${loc(item.title, locale)} · ${t.meta.siteName}`} description={loc(item.summary, locale) || t.meta.shortDescription} />
+      <Link to="/events" className="cat-detail__back">
           {t.catalog.back}
         </Link>
         <div className="cat-card__meta">
@@ -58,7 +55,7 @@ export function EventDetailPage() {
           {loc(item.location, locale) ? ` · ${t.catalog.place}: ${loc(item.location, locale)}` : ""}
         </p>
         <div className="cat-detail__cover">
-          {item.coverUrl ? <img src={item.coverUrl} alt="" /> : null}
+          {item.coverUrl ? <img src={item.coverUrl} alt="" loading="lazy" decoding="async" /> : null}
         </div>
         {loc(item.body, locale) ? (
           <div className="cat-detail__block">

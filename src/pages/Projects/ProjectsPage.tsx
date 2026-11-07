@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { useContent } from "../../content/ContentProvider";
@@ -17,9 +17,6 @@ export function ProjectsPage() {
   const [status, setStatus] = useState<"all" | ProjectStatus>("all");
   const [q, setQ] = useState("");
 
-  useEffect(() => {
-    document.title = `${t.projectsPage.title} · ${t.meta.siteName}`;
-  }, [t, locale]);
 
   const items = useMemo(() => {
     return store.projects
@@ -95,7 +92,7 @@ export function ProjectsPage() {
                   data-cursor="pointer"
                 >
                   <div className="cat-card__cover">
-                    {item.coverUrl ? <img src={item.coverUrl} alt="" /> : null}
+                    {item.coverUrl ? <img src={item.coverUrl} alt="" loading="lazy" decoding="async" /> : null}
                   </div>
                   <div className="cat-card__meta">
                     <span className="cat-badge">{PROJECT_DIRECTION_LABELS[item.direction][locale]}</span>

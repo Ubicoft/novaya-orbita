@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
 import { ROUTES } from "../../i18n";
@@ -7,12 +6,9 @@ import { DirectionIcon } from "./DirectionIcon";
 import { OrbitVisual } from "./OrbitVisual";
 
 export function HomePage() {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const h = t.home;
 
-  useEffect(() => {
-    document.title = `${t.meta.siteName} · ${t.meta.shortDescription}`;
-  }, [t.meta.siteName, t.meta.shortDescription, locale]);
 
   return (
     <div className="home">

@@ -24,6 +24,9 @@ export type Dictionary = {
     more: string;
     language: string;
     theme: string;
+    skipToContent: string;
+    primaryNav: string;
+    mobileNav: string;
   };
   themes: {
     winter: string;
@@ -62,6 +65,7 @@ export type Dictionary = {
       title: string;
       lead: string;
       more: string;
+      relatedNote: string;
       items: Array<{ id: string; title: string; text: string }>;
     };
     events: {
@@ -210,6 +214,7 @@ export type Dictionary = {
     formTitle: string;
     name: string;
     email: string;
+    phone: string;
     subject: string;
     message: string;
     send: string;

@@ -27,9 +27,8 @@ export function JoinPage() {
   });
 
   useEffect(() => {
-    document.title = `${t.joinPage.title} · ${t.meta.siteName}`;
     started.current = Date.now();
-  }, [t, locale]);
+  }, [locale]);
 
   function set<K extends keyof typeof form>(key: K, value: (typeof form)[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));

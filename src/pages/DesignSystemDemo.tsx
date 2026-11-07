@@ -19,6 +19,7 @@ import {
   Toggle,
 } from "../components";
 import { BrandLogo } from "../components/BrandLogo/BrandLogo";
+import { Seo } from "../seo/Seo";
 
 const NAVY = [
   ["50", "#e8eef7", "var(--color-navy-50)"],
@@ -107,6 +108,7 @@ function SwatchGrid({
 export function DesignSystemDemo() {
   return (
     <div className="ds-page">
+      <Seo title="Design System · Новая Орбита" noindex />
       <header className="ds-hero">
         <div className="ds-hero__orbit" aria-hidden="true">
           <span className="ds-hero__orbit-ring" />
