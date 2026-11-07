@@ -9,7 +9,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <LocaleProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Routes>
             <Route element={<PageShell />}>
               <Route index element={<StubPage page="home" />} />
