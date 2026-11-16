@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { BrandCursor } from "./cursor/BrandCursor";
 import { LocaleProvider } from "./i18n/LocaleProvider";
 import { LocaleUrlSync } from "./i18n/LocaleUrlSync";
@@ -66,7 +66,9 @@ export default function App() {
     <ThemeProvider>
       <LocaleProvider>
         <BrandCursor />
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        {/* HashRouter: nested SPA under /novaya-orbita/forum/ — GitHub Pages
+            only serves one root 404.html, so path deep-links would boot the site. */}
+        <HashRouter>
           <LocaleUrlSync />
           <Routes>
             <Route element={<PageShell />}>
@@ -85,7 +87,7 @@ export default function App() {
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </LocaleProvider>
     </ThemeProvider>
   );
