@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:forum": "npm --prefix forum run dev",
     "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "build:forum": "npm --prefix forum run build",
+    "build:all": "npm run build && npm run build:forum && rm -rf dist/forum && mkdir -p dist/forum && cp -a forum/dist/. dist/forum/",
     "lint": "oxlint",
     "preview": "vite preview"
   },

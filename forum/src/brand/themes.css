@@ -1,0 +1,285 @@
+/**
+ * Theme surface language — modern, premium, not institutional navy template.
+ * Default: winter. Easy post-NY flip: change DEFAULT_THEME in theme/types.ts.
+ */
+
+:root,
+[data-theme="winter"] {
+  --theme-name: winter;
+
+  --page-bg:
+    radial-gradient(ellipse 80% 55% at 8% -5%, rgba(253, 230, 138, 0.18), transparent 50%),
+    radial-gradient(ellipse 90% 70% at 10% -10%, rgba(186, 230, 253, 0.5), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 95% 5%, rgba(224, 242, 254, 0.65), transparent 50%),
+    radial-gradient(ellipse 55% 40% at 80% 100%, rgba(251, 113, 133, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(125, 211, 252, 0.28), transparent 55%),
+    linear-gradient(165deg, #0b1c33 0%, #143554 38%, #1e4a6e 68%, #2a5f7f 100%);
+
+  --page-fg: #f8fbff;
+  --page-muted: rgba(248, 251, 255, 0.68);
+  --page-faint: rgba(248, 251, 255, 0.48);
+
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --accent-soft: rgba(125, 211, 252, 0.18);
+  --accent-text: #0b1c33;
+
+  --glass-bg: rgba(255, 255, 255, 0.14);
+  --glass-bg-strong: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-highlight: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 10px 40px rgba(8, 24, 48, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --glass-blur: saturate(1.6) blur(22px);
+
+  --surface: rgba(255, 255, 255, 0.1);
+  --surface-raised: rgba(255, 255, 255, 0.16);
+  --surface-card: rgba(255, 255, 255, 0.88);
+  --surface-card-fg: #0f2744;
+  --surface-card-muted: #4a6480;
+
+  --btn-primary-bg: linear-gradient(135deg, #e0f2fe, #7dd3fc);
+  --btn-primary-fg: #0b1c33;
+  --btn-primary-hover: linear-gradient(135deg, #f0f9ff, #bae6fd);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.12);
+  --btn-secondary-fg: #f8fbff;
+  --btn-secondary-border: rgba(255, 255, 255, 0.32);
+
+  --nav-fg: rgba(255, 255, 255, 0.82);
+  --nav-fg-active: #ffffff;
+  --nav-active-bg: rgba(255, 255, 255, 0.18);
+
+  --footer-bg: rgba(8, 24, 48, 0.55);
+  --footer-border: rgba(255, 255, 255, 0.12);
+
+  --hero-glow: rgba(186, 230, 253, 0.2);
+  --tree-light-a: #fca5a5;
+  --tree-light-b: #fde68a;
+  --tree-light-c: #86efac;
+  --tree-light-d: #93c5fd;
+  --tree-light-e: #f0abfc;
+}
+
+[data-theme="blue"] {
+  --theme-name: blue;
+
+  --page-bg:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(56, 189, 248, 0.22), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 100% 10%, rgba(99, 102, 241, 0.18), transparent 55%),
+    linear-gradient(160deg, #04101f 0%, #0a2744 45%, #0e3a66 100%);
+
+  --page-fg: #f4f8ff;
+  --page-muted: rgba(244, 248, 255, 0.7);
+  --page-faint: rgba(244, 248, 255, 0.48);
+
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --accent-soft: rgba(56, 189, 248, 0.2);
+  --accent-text: #04101f;
+
+  --glass-bg: rgba(14, 58, 102, 0.42);
+  --glass-bg-strong: rgba(14, 58, 102, 0.55);
+  --glass-border: rgba(125, 211, 252, 0.28);
+  --glass-highlight: rgba(186, 230, 253, 0.35);
+  --glass-shadow: 0 12px 40px rgba(2, 12, 28, 0.35),
+    inset 0 1px 0 rgba(186, 230, 253, 0.2);
+  --glass-blur: saturate(1.5) blur(20px);
+
+  --surface: rgba(56, 189, 248, 0.08);
+  --surface-raised: rgba(56, 189, 248, 0.14);
+  --surface-card: rgba(248, 250, 252, 0.94);
+  --surface-card-fg: #0b1f33;
+  --surface-card-muted: #4b647c;
+
+  --btn-primary-bg: linear-gradient(135deg, #38bdf8, #2563eb);
+  --btn-primary-fg: #ffffff;
+  --btn-primary-hover: linear-gradient(135deg, #7dd3fc, #3b82f6);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-fg: #f4f8ff;
+  --btn-secondary-border: rgba(125, 211, 252, 0.35);
+
+  --nav-fg: rgba(244, 248, 255, 0.78);
+  --nav-fg-active: #ffffff;
+  --nav-active-bg: rgba(56, 189, 248, 0.22);
+
+  --footer-bg: rgba(4, 16, 31, 0.72);
+  --footer-border: rgba(56, 189, 248, 0.15);
+
+  --hero-glow: rgba(56, 189, 248, 0.22);
+}
+
+[data-theme="pink"] {
+  --theme-name: pink;
+
+  --page-bg:
+    radial-gradient(ellipse 80% 55% at 5% 0%, rgba(251, 113, 133, 0.2), transparent 50%),
+    radial-gradient(ellipse 65% 45% at 100% 15%, rgba(244, 114, 182, 0.16), transparent 55%),
+    linear-gradient(160deg, #1a0b16 0%, #3b1228 42%, #5b1a3a 100%);
+
+  --page-fg: #fff7fb;
+  --page-muted: rgba(255, 247, 251, 0.7);
+  --page-faint: rgba(255, 247, 251, 0.48);
+
+  --accent: #fb7185;
+  --accent-strong: #f43f5e;
+  --accent-soft: rgba(251, 113, 133, 0.2);
+  --accent-text: #1a0b16;
+
+  --glass-bg: rgba(91, 26, 58, 0.45);
+  --glass-bg-strong: rgba(91, 26, 58, 0.58);
+  --glass-border: rgba(251, 168, 192, 0.32);
+  --glass-highlight: rgba(255, 228, 236, 0.3);
+  --glass-shadow: 0 12px 40px rgba(26, 8, 18, 0.4),
+    inset 0 1px 0 rgba(255, 228, 236, 0.22);
+  --glass-blur: saturate(1.55) blur(20px);
+
+  --surface: rgba(251, 113, 133, 0.08);
+  --surface-raised: rgba(251, 113, 133, 0.14);
+  --surface-card: rgba(255, 250, 252, 0.94);
+  --surface-card-fg: #2a1020;
+  --surface-card-muted: #7a4d62;
+
+  --btn-primary-bg: linear-gradient(135deg, #fb7185, #e11d48);
+  --btn-primary-fg: #ffffff;
+  --btn-primary-hover: linear-gradient(135deg, #fda4af, #f43f5e);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-fg: #fff7fb;
+  --btn-secondary-border: rgba(251, 168, 192, 0.4);
+
+  --nav-fg: rgba(255, 247, 251, 0.8);
+  --nav-fg-active: #ffffff;
+  --nav-active-bg: rgba(251, 113, 133, 0.24);
+
+  --footer-bg: rgba(26, 11, 22, 0.72);
+  --footer-border: rgba(251, 113, 133, 0.16);
+
+  --hero-glow: rgba(251, 113, 133, 0.22);
+}
+
+[data-theme="green"] {
+  --theme-name: green;
+
+  --page-bg:
+    radial-gradient(ellipse 80% 55% at 0% 0%, rgba(52, 211, 153, 0.18), transparent 50%),
+    radial-gradient(ellipse 65% 45% at 100% 10%, rgba(45, 212, 191, 0.14), transparent 55%),
+    linear-gradient(160deg, #061510 0%, #0d2a22 42%, #134234 100%);
+
+  --page-fg: #f3fdf8;
+  --page-muted: rgba(243, 253, 248, 0.7);
+  --page-faint: rgba(243, 253, 248, 0.48);
+
+  --accent: #34d399;
+  --accent-strong: #10b981;
+  --accent-soft: rgba(52, 211, 153, 0.2);
+  --accent-text: #061510;
+
+  --glass-bg: rgba(19, 66, 52, 0.48);
+  --glass-bg-strong: rgba(19, 66, 52, 0.6);
+  --glass-border: rgba(110, 231, 183, 0.3);
+  --glass-highlight: rgba(209, 250, 229, 0.28);
+  --glass-shadow: 0 12px 40px rgba(4, 18, 14, 0.38),
+    inset 0 1px 0 rgba(209, 250, 229, 0.2);
+  --glass-blur: saturate(1.5) blur(20px);
+
+  --surface: rgba(52, 211, 153, 0.08);
+  --surface-raised: rgba(52, 211, 153, 0.14);
+  --surface-card: rgba(247, 254, 250, 0.94);
+  --surface-card-fg: #0c241c;
+  --surface-card-muted: #4d6f60;
+
+  --btn-primary-bg: linear-gradient(135deg, #34d399, #059669);
+  --btn-primary-fg: #ffffff;
+  --btn-primary-hover: linear-gradient(135deg, #6ee7b7, #10b981);
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-fg: #f3fdf8;
+  --btn-secondary-border: rgba(110, 231, 183, 0.38);
+
+  --nav-fg: rgba(243, 253, 248, 0.8);
+  --nav-fg-active: #ffffff;
+  --nav-active-bg: rgba(52, 211, 153, 0.22);
+
+  --footer-bg: rgba(6, 21, 16, 0.72);
+  --footer-border: rgba(52, 211, 153, 0.16);
+
+  --hero-glow: rgba(52, 211, 153, 0.2);
+}
+
+html {
+  background: #0b1c33;
+}
+
+body {
+  background: var(--page-bg);
+  background-attachment: fixed;
+  color: var(--page-fg);
+  min-height: 100vh;
+}
+
+/* Themed shell buttons (override component defaults in shell context) */
+.shell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard);
+}
+
+.shell-btn--primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.shell-btn--primary:hover {
+  background: var(--btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+.shell-btn--secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-fg);
+  border-color: var(--btn-secondary-border);
+  backdrop-filter: blur(8px);
+}
+
+.shell-btn--secondary:hover {
+  background: var(--surface-raised);
+  transform: translateY(-1px);
+}
+
+.shell-btn--ghost {
+  background: transparent;
+  color: var(--page-fg);
+  border-color: transparent;
+}
+
+.shell-btn--ghost:hover {
+  background: var(--surface);
+}
+
+.shell-btn--block {
+  width: 100%;
+}
+
+/* On light cards (stub panel) */
+.shell-btn--on-light {
+  background: transparent;
+  color: var(--surface-card-fg);
+  border-color: rgba(15, 39, 68, 0.22);
+}
+
+.shell-btn--on-light:hover {
+  background: rgba(15, 39, 68, 0.06);
+}

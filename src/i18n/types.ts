@@ -6,6 +6,7 @@ export type NavKey =
   | "directions"
   | "events"
   | "projects"
+  | "forum"
   | "members"
   | "partners"
   | "news"

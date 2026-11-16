@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { BrandLogo } from "../components/BrandLogo/BrandLogo";
 import {
   ALL_NAV,
+  FORUM_URL,
   PRIMARY_NAV,
   ROUTES,
   SECONDARY_NAV,
@@ -75,7 +76,7 @@ export function Header() {
   const moreMenuId = useId();
 
   const secondaryActive = SECONDARY_NAV.some(
-    (key) => ROUTES[key] === location.pathname,
+    (key) => key !== "forum" && ROUTES[key as Exclude<NavKey, "forum">] === location.pathname,
   );
 
   useEffect(() => {
@@ -127,16 +128,30 @@ export function Header() {
     };
   }, [langOpen, themeOpen, moreOpen]);
 
-  const renderNavLink = (key: NavKey, classNameFn = navClass) => (
-    <NavLink
-      key={key}
-      to={withLang(ROUTES[key], locale)}
-      className={classNameFn}
-      end={key === "home"}
-    >
-      {t.nav[key]}
-    </NavLink>
-  );
+  const renderNavLink = (key: NavKey, classNameFn = navClass) => {
+    if (key === "forum") {
+      return (
+        <a
+          key={key}
+          href={FORUM_URL}
+          className={classNameFn({ isActive: false })}
+          rel="noopener noreferrer"
+        >
+          {t.nav.forum}
+        </a>
+      );
+    }
+    return (
+      <NavLink
+        key={key}
+        to={withLang(ROUTES[key], locale)}
+        className={classNameFn}
+        end={key === "home"}
+      >
+        {t.nav[key]}
+      </NavLink>
+    );
+  };
 
   return (
     <>

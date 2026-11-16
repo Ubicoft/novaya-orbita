@@ -12,6 +12,7 @@ export const ru: Dictionary = {
     directions: "Направления",
     events: "Мероприятия",
     projects: "Проекты",
+    forum: "Форум",
     members: "Команда",
     partners: "Партнёры",
     news: "Новости",
@@ -403,6 +404,10 @@ export const ru: Dictionary = {
     projects: {
       title: "Проекты",
       description: "Инициативы и проекты участников.",
+    },
+    forum: {
+      title: "Форум",
+      description: "Площадка общения и совместной работы объединения.",
     },
     members: {
       title: "Команда объединения",

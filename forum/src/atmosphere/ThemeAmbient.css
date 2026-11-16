@@ -1,0 +1,185 @@
+.theme-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.theme-ambient__parallax {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.theme-ambient__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.85;
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+.theme-ambient__blob--a {
+  width: min(48rem, 78vw);
+  height: min(48rem, 78vw);
+  top: -20%;
+  left: -14%;
+  background: var(--ambient-a);
+  animation: ambient-drift-a 18s ease-in-out infinite;
+}
+
+.theme-ambient__blob--b {
+  width: min(42rem, 68vw);
+  height: min(42rem, 68vw);
+  top: 16%;
+  right: -18%;
+  background: var(--ambient-b);
+  animation: ambient-drift-b 22s ease-in-out infinite;
+}
+
+.theme-ambient__blob--c {
+  width: min(36rem, 60vw);
+  height: min(36rem, 60vw);
+  bottom: -14%;
+  left: 24%;
+  background: var(--ambient-c);
+  animation: ambient-drift-c 16s ease-in-out infinite;
+}
+
+.theme-ambient__orbits {
+  display: grid;
+  place-items: center;
+}
+
+.theme-ambient__orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--ambient-orbit);
+  opacity: 0.45;
+  top: 50%;
+  left: 58%;
+  margin: 0;
+  will-change: transform;
+}
+
+.theme-ambient__orbit--1 {
+  width: min(28rem, 55vw);
+  height: min(28rem, 55vw);
+  margin-top: calc(min(28rem, 55vw) / -2);
+  margin-left: calc(min(28rem, 55vw) / -2);
+  animation: orbit-spin 48s linear infinite;
+}
+
+.theme-ambient__orbit--2 {
+  width: min(40rem, 72vw);
+  height: min(40rem, 72vw);
+  margin-top: calc(min(40rem, 72vw) / -2);
+  margin-left: calc(min(40rem, 72vw) / -2);
+  border-style: dashed;
+  opacity: 0.28;
+  animation: orbit-spin 72s linear infinite reverse;
+}
+
+.theme-ambient__orbit-dot {
+  position: absolute;
+  top: 8%;
+  right: 18%;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 18px var(--accent);
+  animation: orbit-dot-pulse 3.5s ease-in-out infinite;
+}
+
+.theme-ambient__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at center, transparent 0 38%, rgba(255, 255, 255, 0.03) 39% 40%, transparent 41%),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 64px 64px, 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  opacity: 0.5;
+}
+
+.theme-ambient--blue {
+  --ambient-a: rgba(56, 189, 248, 0.7);
+  --ambient-b: rgba(99, 102, 241, 0.55);
+  --ambient-c: rgba(14, 165, 233, 0.5);
+  --ambient-orbit: rgba(125, 211, 252, 0.45);
+}
+
+.theme-ambient--pink {
+  --ambient-a: rgba(251, 113, 133, 0.68);
+  --ambient-b: rgba(244, 114, 182, 0.55);
+  --ambient-c: rgba(251, 146, 60, 0.38);
+  --ambient-orbit: rgba(251, 168, 192, 0.48);
+}
+
+.theme-ambient--green {
+  --ambient-a: rgba(52, 211, 153, 0.65);
+  --ambient-b: rgba(45, 212, 191, 0.52);
+  --ambient-c: rgba(132, 204, 22, 0.36);
+  --ambient-orbit: rgba(110, 231, 183, 0.45);
+}
+
+@keyframes ambient-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 6%) scale(1.08);
+  }
+}
+
+@keyframes ambient-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5%, 4%) scale(1.1);
+  }
+}
+
+@keyframes ambient-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, -5%) scale(1.06);
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-ambient__blob,
+  .theme-ambient__orbit,
+  .theme-ambient__orbit-dot {
+    animation: none !important;
+    transition: none !important;
+  }
+}

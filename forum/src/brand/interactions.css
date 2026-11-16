@@ -1,0 +1,168 @@
+/**
+ * Stronger hover / selected motion across shell controls.
+ * All themes. Respects prefers-reduced-motion via token durations.
+ */
+
+.glass-header__link,
+.nav-more__button,
+.glass-chip__btn,
+.glass-chip__option,
+.glass-header__menu-toggle,
+.mobile-nav__link,
+.shell-btn,
+.brand-logo {
+  transition:
+    transform var(--duration-base) var(--ease-spring),
+    background var(--duration-base) var(--ease-standard),
+    background-color var(--duration-base) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    filter var(--duration-fast) var(--ease-standard);
+}
+
+.glass-header__link:hover {
+  color: var(--nav-fg-active);
+  background: var(--surface-raised);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.glass-header__link--active {
+  color: var(--nav-fg-active);
+  background: var(--nav-active-bg);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 8px 18px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
+}
+
+.glass-header__link--active:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.glass-chip__btn:hover,
+.glass-chip__btn[aria-expanded="true"] {
+  background: var(--surface-raised);
+  border-color: var(--glass-highlight);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 0 3px var(--accent-soft),
+    0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.glass-chip__option:hover {
+  background: var(--surface-raised);
+  transform: translateX(3px);
+}
+
+.glass-chip__option--active {
+  background: var(--nav-active-bg);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.nav-more__button:hover,
+.nav-more__button[aria-expanded="true"],
+.nav-more__button--active {
+  color: var(--nav-fg-active);
+  background: var(--nav-active-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.glass-header__menu-toggle:hover {
+  background: var(--surface-raised);
+  transform: scale(1.08);
+  border-color: var(--glass-highlight);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.shell-btn--primary:hover {
+  background: var(--btn-primary-hover);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.22),
+    0 0 0 4px var(--accent-soft);
+  filter: brightness(1.05);
+}
+
+.shell-btn--primary:active {
+  transform: translateY(-1px) scale(0.985);
+}
+
+.shell-btn--secondary:hover {
+  background: var(--surface-raised);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+}
+
+.shell-btn--ghost:hover {
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.shell-btn--on-light:hover {
+  background: rgba(15, 39, 68, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(15, 39, 68, 0.1);
+}
+
+.mobile-nav__link:hover {
+  transform: translateX(4px);
+  background: var(--surface-raised);
+}
+
+.mobile-nav__link--active {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.brand-logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 45%, transparent));
+}
+
+/* Selection / focus-visible punch */
+.glass-header__link:focus-visible,
+.glass-chip__btn:focus-visible,
+.glass-chip__option:focus-visible,
+.nav-more__button:focus-visible,
+.shell-btn:focus-visible,
+.glass-header__menu-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 80%, white 20%);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-header__link,
+  .nav-more__button,
+  .glass-chip__btn,
+  .glass-chip__option,
+  .glass-header__menu-toggle,
+  .mobile-nav__link,
+  .shell-btn,
+  .brand-logo {
+    transition: background-color 0ms, color 0ms, border-color 0ms !important;
+  }
+
+  .glass-header__link:hover,
+  .glass-header__link--active,
+  .glass-header__link--active:hover,
+  .glass-chip__btn:hover,
+  .glass-chip__btn[aria-expanded="true"],
+  .glass-chip__option:hover,
+  .nav-more__button:hover,
+  .nav-more__button[aria-expanded="true"],
+  .nav-more__button--active,
+  .glass-header__menu-toggle:hover,
+  .shell-btn--primary:hover,
+  .shell-btn--primary:active,
+  .shell-btn--secondary:hover,
+  .shell-btn--ghost:hover,
+  .shell-btn--on-light:hover,
+  .mobile-nav__link:hover,
+  .brand-logo:hover {
+    transform: none !important;
+    filter: none !important;
+  }
+}

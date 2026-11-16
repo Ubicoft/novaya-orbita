@@ -12,6 +12,7 @@ export const tj: Dictionary = {
     directions: "Самтҳо",
     events: "Чорабиниҳо",
     projects: "Лоиҳаҳо",
+    forum: "Форум",
     members: "Даста",
     partners: "Шарикоон",
     news: "Ахбор",
@@ -403,6 +404,10 @@ export const tj: Dictionary = {
     projects: {
       title: "Лоиҳаҳо",
       description: "Ташаббусҳо ва лоиҳаҳои иштирокчиён.",
+    },
+    forum: {
+      title: "Форум",
+      description: "Майдони муошират ва кори муштараки иттиҳодия.",
     },
     members: {
       title: "Дастаи иттиҳодия",
