@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { BrandLogo } from "../components/BrandLogo/BrandLogo";
-import { ALL_NAV, ROUTES } from "../i18n";
+import { ALL_NAV, ROUTES, withLang } from "../i18n";
 import { useLocale } from "../i18n/LocaleProvider";
 
 export function Footer() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const year = new Date().getFullYear();
 
   const quick = ALL_NAV.filter((key) =>
@@ -26,7 +26,7 @@ export function Footer() {
             <h2 className="site-footer__heading">{t.footer.quickLinks}</h2>
             <nav className="site-footer__links" aria-label={t.footer.quickLinks}>
               {quick.map((key) => (
-                <Link key={key} className="site-footer__link" to={ROUTES[key]}>
+                <Link key={key} className="site-footer__link" to={withLang(ROUTES[key], locale)}>
                   {t.nav[key]}
                 </Link>
               ))}
@@ -44,8 +44,8 @@ export function Footer() {
             © {year} {t.meta.siteName}. {t.footer.rights}.
           </p>
           <div className="site-footer__bottom-links">
-            <Link to="/design-system">{t.footer.designSystem}</Link>
-            <Link to={ROUTES.contacts}>{t.nav.contacts}</Link>
+            <Link to={withLang("/design-system", locale)}>{t.footer.designSystem}</Link>
+            <Link to={withLang(ROUTES.contacts, locale)}>{t.nav.contacts}</Link>
           </div>
         </div>
       </div>

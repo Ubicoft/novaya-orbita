@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logoHorizontal from "../../assets/brand/logo-horizontal-transparent.png";
 import logoStacked from "../../assets/brand/logo-stacked-transparent.png";
 import logoWinter from "../../assets/brand/logo-winter-transparent.png";
+import { withLang } from "../../i18n";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { useTheme } from "../../theme/ThemeProvider";
 
@@ -23,8 +24,9 @@ export function BrandLogo({
   className = "",
   onNavigate,
 }: BrandLogoProps) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { isWinter } = useTheme();
+  const target = to === null ? null : withLang(to.split("?")[0] || "/", locale, to.includes("?") ? to.split("?")[1] : "");
 
   const resolved =
     variant === "auto"
@@ -62,14 +64,14 @@ export function BrandLogo({
       draggable={false}
     />  );
 
-  if (to === null) {
+  if (target === null) {
     return <span className={classes}>{image}</span>;
   }
 
   return (
     <Link
       className={classes}
-      to={to}
+      to={target}
       aria-label={t.meta.siteName}
       onClick={onNavigate}
     >
