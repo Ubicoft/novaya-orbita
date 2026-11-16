@@ -1,4 +1,5 @@
 import { createEmptyStore } from "./empty";
+import { normalizeMember } from "./team";
 import type { ContentStore } from "./types";
 
 export const CONTENT_STORAGE_KEY = "novaya-orbita.content.v1";
@@ -22,7 +23,7 @@ export function loadContentStore(): ContentStore {
       version: 1,
       events: parsed.events ?? [],
       projects: parsed.projects ?? [],
-      members: parsed.members ?? [],
+      members: (parsed.members ?? []).map((m) => normalizeMember(m)),
       partners: parsed.partners ?? [],
       news: parsed.news ?? [],
       contacts: { ...base.contacts, ...(parsed.contacts ?? {}) },

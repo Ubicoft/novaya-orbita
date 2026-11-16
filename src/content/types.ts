@@ -23,6 +23,54 @@ export type ProjectDirection =
   | "projects"
   | "leadership";
 
+/** Organizational office (должность). Empty string = no appointed office. */
+export type OfficePosition =
+  | "chair"
+  | "first-vice-chair"
+  | "vice-chair"
+  | "coord-council"
+  | "direction-head"
+  | "representation-head"
+  | "project-head"
+  | "secretariat-head"
+  | "direction-deputy"
+  | "representation-deputy"
+  | "project-deputy"
+  | "direction-coordinator"
+  | "project-coordinator"
+  | "representation-coordinator"
+  | "curator"
+  | "mentor"
+  | "organizer"
+  | "volunteer"
+  | "chair-advisor"
+  | "expert";
+
+export type OfficeTier =
+  | "executive"
+  | "coord-body"
+  | "leadership"
+  | "deputies"
+  | "coordination"
+  | "organizing"
+  | "membership"
+  | "honorary";
+
+/** Membership status — separate from office/position. */
+export type MembershipStatus =
+  | "candidate"
+  | "member"
+  | "active"
+  | "honorary"
+  | "suspended";
+
+export type PositionHistoryEntry = {
+  at: string;
+  position: OfficePosition | "";
+  note: string;
+};
+
+/** @deprecated Use OfficePosition + MembershipStatus; kept for migration typing only. */
 export type MemberRole =
   | "leadership"
   | "coordination"
@@ -97,14 +145,23 @@ export type MemberRecord = {
   id: string;
   slug: string;
   published: boolean;
-  role: MemberRole;
+  /** Organizational office; empty if the person has membership only. */
+  position: OfficePosition | "";
+  membershipStatus: MembershipStatus;
   photoUrl: string;
   name: LocalizedString;
   university: LocalizedString;
+  country: LocalizedString;
+  city: LocalizedString;
+  /** University / region / country representation label. */
+  representation: LocalizedString;
   direction: ProjectDirection | "";
   bio: LocalizedString;
   interests: LocalizedString;
   publicProfiles: string;
+  joinedAt: string;
+  appointedAt: string;
+  positionHistory: PositionHistoryEntry[];
   updatedAt: string;
 };
 

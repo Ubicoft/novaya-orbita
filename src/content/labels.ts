@@ -2,11 +2,15 @@ import type { Locale } from "../i18n/types";
 import type {
   EventCategory,
   EventStatus,
-  MemberRole,
   PartnerCategory,
   ProjectDirection,
   ProjectStatus,
 } from "./types";
+import {
+  MEMBERSHIP_STATUS_LABELS,
+  OFFICE_POSITION_LABELS,
+  OFFICE_TIER_LABELS,
+} from "./team";
 
 type Dict = Record<Locale, string>;
 
@@ -52,20 +56,13 @@ export const PROJECT_DIRECTION_LABELS: Record<ProjectDirection, Dict> = {
   leadership: { ru: "Лидерство", tj: "Роҳбарӣ", en: "Leadership" },
 };
 
-export const MEMBER_ROLE_LABELS: Record<MemberRole, Dict> = {
-  leadership: { ru: "Руководство", tj: "Роҳбарӣ", en: "Leadership" },
-  coordination: { ru: "Координация", tj: "Ҳамоҳангсозӣ", en: "Coordination" },
-  "direction-lead": {
-    ru: "Руководитель направления",
-    tj: "Роҳбари самт",
-    en: "Direction lead",
-  },
-  "project-coordinator": {
-    ru: "Координатор проекта",
-    tj: "Ҳамоҳангсози лоиҳа",
-    en: "Project coordinator",
-  },
-  member: { ru: "Участник", tj: "Иштирокчӣ", en: "Member" },
+/** @deprecated Prefer OFFICE_POSITION_LABELS / MEMBERSHIP_STATUS_LABELS */
+export const MEMBER_ROLE_LABELS = OFFICE_POSITION_LABELS;
+
+export {
+  MEMBERSHIP_STATUS_LABELS,
+  OFFICE_POSITION_LABELS,
+  OFFICE_TIER_LABELS,
 };
 
 export const PARTNER_CATEGORY_LABELS: Record<PartnerCategory, Dict> = {
