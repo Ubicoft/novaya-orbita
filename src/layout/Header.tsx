@@ -6,6 +6,7 @@ import {
   PRIMARY_NAV,
   ROUTES,
   SECONDARY_NAV,
+  withLang,
   type Locale,
   type NavKey,
 } from "../i18n";
@@ -129,7 +130,7 @@ export function Header() {
   const renderNavLink = (key: NavKey, classNameFn = navClass) => (
     <NavLink
       key={key}
-      to={ROUTES[key]}
+      to={withLang(ROUTES[key], locale)}
       className={classNameFn}
       end={key === "home"}
     >
@@ -250,7 +251,7 @@ export function Header() {
             </div>
 
             <Link
-              to={ROUTES.join}
+              to={withLang(ROUTES.join, locale)}
               className="glass-header__cta shell-btn shell-btn--primary ui-idle ui-idle--cta"
             >
               {t.nav.join}
@@ -308,7 +309,7 @@ export function Header() {
 
           <div className="mobile-nav__cta">
             <Link
-              to={ROUTES.join}
+              to={withLang(ROUTES.join, locale)}
               className="shell-btn shell-btn--primary shell-btn--block ui-idle ui-idle--cta"
               onClick={() => setMobileOpen(false)}
             >

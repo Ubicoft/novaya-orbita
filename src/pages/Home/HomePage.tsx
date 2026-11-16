@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container/Container";
-import { ROUTES } from "../../i18n";
+import { ROUTES, withLang } from "../../i18n";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { DirectionIcon } from "./DirectionIcon";
 import { OrbitVisual } from "./OrbitVisual";
 
 export function HomePage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const h = t.home;
+  const to = (path: string) => withLang(path, locale);
 
 
   return (
@@ -25,10 +26,10 @@ export function HomePage() {
           </h1>
           <p className="home-hero__lead">{h.hero.lead}</p>
           <div className="home-hero__actions">
-            <Link to={ROUTES.join} className="shell-btn shell-btn--primary ui-idle ui-idle--cta">
+            <Link to={to(ROUTES.join)} className="shell-btn shell-btn--primary ui-idle ui-idle--cta">
               {h.hero.ctaJoin}
             </Link>
-            <Link to={ROUTES.about} className="shell-btn shell-btn--secondary">
+            <Link to={to(ROUTES.about)} className="shell-btn shell-btn--secondary">
               {h.hero.ctaAbout}
             </Link>
           </div>
@@ -67,7 +68,7 @@ export function HomePage() {
               </h2>
               <p className="home-section__lead">{h.directions.lead}</p>
             </div>
-            <Link to={ROUTES.directions} className="home-section__more">
+            <Link to={to(ROUTES.directions)} className="home-section__more">
               {h.directions.more}
             </Link>
           </div>
@@ -76,7 +77,7 @@ export function HomePage() {
             {h.directions.items.map((item) => (
               <Link
                 key={item.id}
-                to={ROUTES.directions}
+                to={to(ROUTES.directions)}
                 className="home-dir__card"
                 data-cursor="pointer"
               >
@@ -101,7 +102,7 @@ export function HomePage() {
             <div className="home-empty__copy">
               <h3 className="home-empty__title">{h.events.emptyTitle}</h3>
               <p className="home-empty__body">{h.events.emptyBody}</p>
-              <Link to={ROUTES.events} className="shell-btn shell-btn--secondary">
+              <Link to={to(ROUTES.events)} className="shell-btn shell-btn--secondary">
                 {h.events.cta}
               </Link>
             </div>
@@ -123,7 +124,7 @@ export function HomePage() {
             <div className="home-empty home-empty--compact home-empty--on-light">
               <h3 className="home-empty__title">{h.projects.emptyTitle}</h3>
               <p className="home-empty__body">{h.projects.emptyBody}</p>
-              <Link to={ROUTES.projects} className="shell-btn shell-btn--on-light">
+              <Link to={to(ROUTES.projects)} className="shell-btn shell-btn--on-light">
                 {h.projects.cta}
               </Link>
             </div>
@@ -146,7 +147,7 @@ export function HomePage() {
             <div className="home-empty__copy">
               <h3 className="home-empty__title">{h.news.emptyTitle}</h3>
               <p className="home-empty__body">{h.news.emptyBody}</p>
-              <Link to={ROUTES.news} className="shell-btn shell-btn--secondary">
+              <Link to={to(ROUTES.news)} className="shell-btn shell-btn--secondary">
                 {h.news.cta}
               </Link>
             </div>
@@ -160,7 +161,7 @@ export function HomePage() {
             {h.join.title}
           </h2>
           <p className="home-join__lead">{h.join.lead}</p>
-          <Link to={ROUTES.join} className="shell-btn shell-btn--primary ui-idle ui-idle--cta">
+          <Link to={to(ROUTES.join)} className="shell-btn shell-btn--primary ui-idle ui-idle--cta">
             {h.join.cta}
           </Link>
         </Container>

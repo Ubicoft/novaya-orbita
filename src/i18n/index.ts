@@ -57,3 +57,15 @@ export const ROUTES: Record<NavKey, string> = {
   contacts: "/contacts",
   join: "/join",
 };
+
+/** Build an in-app location that keeps `?lang=` (and other query params). */
+export function withLang(
+  pathname: string,
+  locale: Locale,
+  search?: string,
+): { pathname: string; search: string } {
+  const params = new URLSearchParams(search ?? "");
+  params.set("lang", locale);
+  const next = params.toString();
+  return { pathname, search: next ? `?${next}` : "" };
+}
