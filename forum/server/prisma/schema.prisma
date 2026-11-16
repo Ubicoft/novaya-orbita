@@ -52,8 +52,53 @@ model Profile {
   localeHint       String?
   reputation       Int      @default(0)
   postCount        Int      @default(0)
+  /// Auto Orbit Rank id (activity ladder). Special ranks live on SpecialRankGrant.
+  orbitRankId      String   @default("cosmic_novice")
+  helpfulAnswers   Int      @default(0)
+  reactionsReceived Int     @default(0)
+  threadsStarted   Int      @default(0)
+  materialsShared  Int      @default(0)
+  eventParticipation Int    @default(0)
+  uniqueThreads    Int      @default(0)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+  achievements     UserAchievement[]
+  specialRanks     SpecialRankGrant[]
+}
+
+/// Manual special Orbit Rank (founder / honorary / guest) — never auto-earned.
+model SpecialRankGrant {
+  id        String   @id @default(cuid())
+  userId    String
+  profile   Profile  @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  rankId    String
+  grantedBy String?
+  note      String?
+  createdAt DateTime @default(now())
+
+  @@unique([userId, rankId])
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  profile       Profile  @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  achievementId String
+  earnedAt      DateTime @default(now())
+
+  @@unique([userId, achievementId])
+}
+
+model RankThreshold {
+  id               String @id @default(cuid())
+  rankId           String @unique
+  minScore         Int
+  minUniqueThreads Int
+}
+
+model ScoreWeightConfig {
+  id    String @id @default("default")
+  json  String
 }
 
 model Session {

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { CategoryIcon } from "../components/CategoryIcon";
 import { EmptyState } from "../components/EmptyState";
+import { ProfileCard } from "../components/ProfileCard";
 import { SearchStub } from "../components/SearchStub";
 import { CATEGORIES, SITE_URL } from "../data/categories";
+import { getDemoMembers } from "../data/demoMembers";
 import { ROUTES } from "../i18n";
 import { useLocale } from "../i18n/LocaleProvider";
 
@@ -111,7 +113,13 @@ export function HomePage() {
           </h2>
           <Link to={ROUTES.members}>{t.nav.members}</Link>
         </div>
-        <EmptyState>{t.home.membersEmpty}</EmptyState>
+        <div className="forum-members-grid forum-members-grid--compact">
+          {getDemoMembers()
+            .slice(0, 4)
+            .map((m) => (
+              <ProfileCard key={m.id} member={m} compact />
+            ))}
+        </div>
       </section>
     </div>
   );

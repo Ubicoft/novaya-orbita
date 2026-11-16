@@ -4,9 +4,12 @@ import { LocaleProvider } from "./i18n/LocaleProvider";
 import { LocaleUrlSync } from "./i18n/LocaleUrlSync";
 import { PageShell } from "./layout/PageShell";
 import { AboutPage } from "./pages/AboutPage";
+import { AdminRanksPage } from "./pages/AdminRanksPage";
 import { CategoriesPage } from "./pages/CategoriesPage";
 import { CategoryPage } from "./pages/CategoryPage";
 import { HomePage } from "./pages/HomePage";
+import { MembersPage } from "./pages/MembersPage";
+import { ProfilePage } from "./pages/ProfilePage";
 import { SimpleEmptyPage } from "./pages/SimpleEmptyPage";
 import { SubsectionPage } from "./pages/SubsectionPage";
 import { useLocale } from "./i18n/LocaleProvider";
@@ -49,18 +52,6 @@ function QaPage() {
   );
 }
 
-function MembersPage() {
-  const { t } = useLocale();
-  return (
-    <SimpleEmptyPage
-      brand={t.nav.members}
-      title={t.membersPage.title}
-      lead={t.membersPage.lead}
-      empty={t.membersPage.empty}
-    />
-  );
-}
-
 export default function App() {
   return (
     <ThemeProvider>
@@ -83,6 +74,8 @@ export default function App() {
               <Route path="popular" element={<PopularPage />} />
               <Route path="qa" element={<QaPage />} />
               <Route path="members" element={<MembersPage />} />
+              <Route path="members/:memberId" element={<ProfilePage />} />
+              <Route path="admin/ranks" element={<AdminRanksPage />} />
               <Route path="about" element={<AboutPage />} />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />

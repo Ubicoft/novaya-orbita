@@ -82,6 +82,61 @@ export type Dictionary = {
   qaPage: { title: string; lead: string; empty: string };
   membersPage: { title: string; lead: string; empty: string };
   aboutPage: { title: string; lead: string; body: string[]; toSite: string };
+  profile: {
+    registered: string;
+    posts: string;
+    reactions: string;
+    reputation: string;
+    achievements: string;
+    currentRank: string;
+    orbitProgress: string;
+    scoreLabel: string;
+  };
+  ranks: Record<
+    | "cosmic_novice"
+    | "pioneer"
+    | "explorer"
+    | "navigator"
+    | "orbital_member"
+    | "stellar_member"
+    | "orbit_keeper"
+    | "debate_master"
+    | "stellar_expert"
+    | "cosmic_strategist"
+    | "idea_architect"
+    | "orbit_legend"
+    | "forum_founder"
+    | "honorary_member"
+    | "special_guest",
+    string
+  >;
+  achievements: Record<
+    | "first_step"
+    | "active_talker"
+    | "community_helper"
+    | "initiator"
+    | "researcher"
+    | "organizer"
+    | "international_voice",
+    string
+  >;
+  adminRanks: {
+    nav: string;
+    title: string;
+    lead: string;
+    saved: string;
+    specialTitle: string;
+    specialHint: string;
+    autoOnly: string;
+    weightsTitle: string;
+    weightsHint: string;
+    helpful: string;
+    threads: string;
+    materials: string;
+    events: string;
+    postSoftCap: string;
+    defaultWeight: string;
+  };
   footer: {
     rights: string;
     toSite: string;
