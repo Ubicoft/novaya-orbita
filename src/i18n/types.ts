@@ -156,6 +156,15 @@ export type Dictionary = {
     category: string;
     direction: string;
     role: string;
+    position: string;
+    membership: string;
+    country: string;
+    city: string;
+    representation: string;
+    joinedAt: string;
+    appointedAt: string;
+    positionHistory: string;
+    noOffice: string;
     format: string;
     open: string;
     back: string;
@@ -198,6 +207,14 @@ export type Dictionary = {
     title: string;
     lead: string;
     disclaimer: string;
+    structureTitle: string;
+    structureLead: string;
+    peopleTitle: string;
+    filtersMore: string;
+    viewStructure: string;
+    viewPeople: string;
+    executiveTitle: string;
+    permissionsNote: string;
   };
   partnersPage: {
     title: string;

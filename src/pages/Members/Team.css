@@ -1,0 +1,219 @@
+/* Team / org structure — extends catalog language */
+
+.team__disclaimer {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.team__note {
+  margin-top: 0.85rem;
+  max-width: 42rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--page-muted);
+}
+
+.team__view-toggle {
+  margin-top: 1.75rem;
+}
+
+.team-structure__title {
+  margin: 1.5rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--page-fg);
+}
+
+.team-exec {
+  margin: 1.75rem 0 2rem;
+  padding: 1.25rem 1.1rem 1.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--glass-border));
+  background: color-mix(in srgb, var(--surface-raised) 82%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.team-exec__title {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.team-tiers {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.team-tier {
+  padding: 1.1rem 1.05rem 1.15rem;
+  border-radius: 1.15rem;
+  border: 1px solid var(--glass-border);
+  background: color-mix(in srgb, var(--surface) 75%, transparent);
+}
+
+.team-tier__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--page-fg);
+}
+
+.team-tier__positions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.team-office {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--surface-raised) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--glass-border) 80%, transparent);
+}
+
+.team-office__name {
+  margin: 0;
+  font-weight: 650;
+  color: var(--page-fg);
+}
+
+.team-office__blurb {
+  margin: 0.2rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--page-muted);
+}
+
+.team-office__people {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+}
+
+.team-office__link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.team-office__link:hover {
+  text-decoration: underline;
+}
+
+.team-office__vacant {
+  margin: 0.15rem 0 0;
+  color: var(--page-muted);
+  opacity: 0.7;
+}
+
+.team-card__photo {
+  aspect-ratio: 1 / 1;
+  max-width: 9rem;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-raised));
+}
+
+.team-card__initials {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.team-card__initials--lg {
+  font-size: 3.5rem;
+}
+
+.team-detail__layout {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.team-detail__photo {
+  aspect-ratio: 1 / 1;
+  max-width: 16rem;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface-raised));
+  border-radius: 1.1rem;
+  overflow: hidden;
+}
+
+.team-detail__meta {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.team-detail__meta dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--page-muted);
+}
+
+.team-detail__meta dd {
+  margin: 0.15rem 0 0;
+  color: var(--page-fg);
+}
+
+.team-history {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.team-history li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  color: var(--page-fg);
+}
+
+.team-history__date {
+  color: var(--page-muted);
+  min-width: 6.5rem;
+}
+
+.team-history__note {
+  color: var(--page-muted);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .team-detail__layout {
+    grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .team-tier__positions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .team-tier__positions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

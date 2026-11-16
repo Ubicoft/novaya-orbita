@@ -4,12 +4,23 @@ import { useContent } from "../../content/ContentProvider";
 import { APPLICATION_STATUS_LABELS } from "../../content/labels";
 import { slugify, uid } from "../../content/store";
 import {
+  MEMBERSHIP_STATUS_LABELS,
+  OFFICE_POSITION_LABELS,
+  OFFICE_POSITIONS,
+  MEMBERSHIP_STATUSES,
+  appendPositionHistory,
+  blankMember,
+} from "../../content/team";
+import {
   emptyLocalized,
   type ApplicationStatus,
   type EventRecord,
   type LocalizedString,
-  type MemberRole,
+  type MemberRecord,
+  type MembershipStatus,
   type NewsRecord,
+  type OfficePosition,
+  type ProjectDirection,
   type ProjectRecord,
 } from "../../content/types";
 import { useLocale } from "../../i18n/LocaleProvider";
@@ -420,70 +431,214 @@ function ProjectsAdmin() {
 }
 
 function MembersAdmin() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
   const { store, upsertMember, removeMember } = useContent();
-  const [nameRu, setNameRu] = useState("");
-  const [role, setRole] = useState("member");
-  const [published, setPublished] = useState(false);
+  const blank = (): MemberRecord =>
+    blankMember({
+      id: uid(),
+      slug: `member-${Date.now().toString(36)}`,
+      membershipStatus: "member",
+    });
+  const [draft, setDraft] = useState<MemberRecord>(blank());
+  const [baselinePosition, setBaselinePosition] = useState<OfficePosition | "">("");
 
   return (
-    <div>
-      <h1>{t.admin.navMembers}</h1>
-      <form
-        className="admin-form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!nameRu.trim()) return;
-          const id = uid();
-          upsertMember({
-            id,
-            slug: slugify(nameRu),
-            published,
-            role: role as MemberRole,
-            photoUrl: "",
-            name: { ru: nameRu, tj: nameRu, en: nameRu },
-            university: emptyLocalized(),
-            direction: "",
-            bio: emptyLocalized(),
-            interests: emptyLocalized(),
-            publicProfiles: "",
-            updatedAt: new Date().toISOString(),
-          });
-          setNameRu("");
-          setPublished(false);
-        }}
-      >
-        <label className="admin-field">
-          <span>Name (RU seed)</span>
-          <input value={nameRu} onChange={(e) => setNameRu(e.target.value)} />
-        </label>
-        <label className="admin-field">
-          <span>Role</span>
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="leadership">leadership</option>
-            <option value="coordination">coordination</option>
-            <option value="direction-lead">direction-lead</option>
-            <option value="project-coordinator">project-coordinator</option>
-            <option value="member">member</option>
-          </select>
-        </label>
-        <label className="admin-field admin-field--check">
-          <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} />
-          <span>{t.admin.published}</span>
-        </label>
-        <button type="submit" className="shell-btn shell-btn--primary">
-          {t.admin.create}
-        </button>
-      </form>
-      <ItemList
-        empty={t.admin.empty}
-        items={store.members.map((m) => ({
-          id: m.id,
-          label: `${m.name.ru || m.slug} · ${m.published ? t.admin.published : t.admin.draft}`,
-        }))}
-        onRemove={removeMember}
-      />
-    </div>
+    <AdminCrud
+      title={t.admin.navMembers}
+      items={store.members.map((m) => ({
+        id: m.id,
+        label: `${m.name.ru || m.slug}${
+          m.position ? ` · ${OFFICE_POSITION_LABELS[m.position].ru}` : ""
+        } · ${MEMBERSHIP_STATUS_LABELS[m.membershipStatus].ru}`,
+        published: m.published,
+      }))}
+      onCreate={() => {
+        const next = blank();
+        setDraft(next);
+        setBaselinePosition("");
+      }}
+      onEdit={(id) => {
+        const found = store.members.find((m) => m.id === id) || blank();
+        setDraft(found);
+        setBaselinePosition(found.position);
+      }}
+      onRemove={removeMember}
+      form={
+        <form
+          className="admin-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!draft.name.ru.trim()) return;
+            let next: MemberRecord = {
+              ...draft,
+              slug: slugify(draft.name.ru || draft.slug),
+              updatedAt: new Date().toISOString(),
+            };
+            if (draft.position !== baselinePosition) {
+              next = appendPositionHistory(
+                { ...next, position: baselinePosition },
+                draft.position,
+              );
+            }
+            upsertMember(next);
+            const fresh = blank();
+            setDraft(fresh);
+            setBaselinePosition("");
+          }}
+        >
+          <p className="admin-hint">{t.membersPage.permissionsNote}</p>
+          <label className="admin-field admin-field--check">
+            <input
+              type="checkbox"
+              checked={draft.published}
+              onChange={(e) => setDraft({ ...draft, published: e.target.checked })}
+            />
+            <span>{t.admin.published}</span>
+          </label>
+          <LocalizedFields
+            label="Full name"
+            value={draft.name}
+            onChange={(name) => setDraft({ ...draft, name })}
+          />
+          <div className="admin-row">
+            <label className="admin-field">
+              <span>{t.catalog.position}</span>
+              <select
+                value={draft.position}
+                onChange={(e) =>
+                  setDraft({
+                    ...draft,
+                    position: e.target.value as OfficePosition | "",
+                  })
+                }
+              >
+                <option value="">{t.catalog.noOffice}</option>
+                {OFFICE_POSITIONS.map((p) => (
+                  <option key={p} value={p}>
+                    {OFFICE_POSITION_LABELS[p][locale]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="admin-field">
+              <span>{t.catalog.membership}</span>
+              <select
+                value={draft.membershipStatus}
+                onChange={(e) =>
+                  setDraft({
+                    ...draft,
+                    membershipStatus: e.target.value as MembershipStatus,
+                  })
+                }
+              >
+                {MEMBERSHIP_STATUSES.map((s) => (
+                  <option key={s} value={s}>
+                    {MEMBERSHIP_STATUS_LABELS[s][locale]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="admin-field">
+              <span>{t.catalog.direction}</span>
+              <select
+                value={draft.direction}
+                onChange={(e) =>
+                  setDraft({
+                    ...draft,
+                    direction: e.target.value as ProjectDirection | "",
+                  })
+                }
+              >
+                <option value="">—</option>
+                <option value="education">education</option>
+                <option value="debate">debate</option>
+                <option value="international">international</option>
+                <option value="science">science</option>
+                <option value="social">social</option>
+                <option value="projects">projects</option>
+                <option value="leadership">leadership</option>
+              </select>
+            </label>
+          </div>
+          <LocalizedFields
+            label={t.catalog.university}
+            value={draft.university}
+            onChange={(university) => setDraft({ ...draft, university })}
+          />
+          <LocalizedFields
+            label={t.catalog.country}
+            value={draft.country}
+            onChange={(country) => setDraft({ ...draft, country })}
+          />
+          <LocalizedFields
+            label={t.catalog.city}
+            value={draft.city}
+            onChange={(city) => setDraft({ ...draft, city })}
+          />
+          <LocalizedFields
+            label={t.catalog.representation}
+            value={draft.representation}
+            onChange={(representation) => setDraft({ ...draft, representation })}
+          />
+          <LocalizedFields label="Bio" value={draft.bio} onChange={(bio) => setDraft({ ...draft, bio })} />
+          <LocalizedFields
+            label={t.catalog.interests}
+            value={draft.interests}
+            onChange={(interests) => setDraft({ ...draft, interests })}
+          />
+          <div className="admin-row">
+            <label className="admin-field">
+              <span>Photo URL</span>
+              <input
+                value={draft.photoUrl}
+                onChange={(e) => setDraft({ ...draft, photoUrl: e.target.value })}
+              />
+            </label>
+            <label className="admin-field">
+              <span>{t.catalog.joinedAt}</span>
+              <input
+                type="date"
+                value={draft.joinedAt}
+                onChange={(e) => setDraft({ ...draft, joinedAt: e.target.value })}
+              />
+            </label>
+            <label className="admin-field">
+              <span>{t.catalog.appointedAt}</span>
+              <input
+                type="date"
+                value={draft.appointedAt}
+                onChange={(e) => setDraft({ ...draft, appointedAt: e.target.value })}
+              />
+            </label>
+          </div>
+          <label className="admin-field">
+            <span>{t.catalog.profiles}</span>
+            <textarea
+              rows={3}
+              value={draft.publicProfiles}
+              onChange={(e) => setDraft({ ...draft, publicProfiles: e.target.value })}
+            />
+          </label>
+          {draft.positionHistory.length ? (
+            <div className="admin-hint">
+              <strong>{t.catalog.positionHistory}</strong>
+              <ul>
+                {draft.positionHistory.slice(0, 8).map((h) => (
+                  <li key={`${h.at}-${h.position}-${h.note}`}>
+                    {h.at.slice(0, 10)} ·{" "}
+                    {h.position ? OFFICE_POSITION_LABELS[h.position][locale] : t.catalog.noOffice}
+                    {h.note ? ` (${h.note})` : ""}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+          <button type="submit" className="shell-btn shell-btn--primary">
+            {t.admin.save}
+          </button>
+        </form>
+      }
+    />
   );
 }
 
