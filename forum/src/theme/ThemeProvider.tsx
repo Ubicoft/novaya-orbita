@@ -53,6 +53,25 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
+  /** Keep in sync with the main site (same `novaya-orbita.theme` key). */
+  useEffect(() => {
+    const apply = () => {
+      const next = readStoredTheme();
+      setThemeState((prev) => (prev === next ? prev : next));
+    };
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === THEME_STORAGE_KEY || event.key === null) apply();
+    };
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("focus", apply);
+    document.addEventListener("visibilitychange", apply);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("focus", apply);
+      document.removeEventListener("visibilitychange", apply);
+    };
+  }, []);
+
   const value = useMemo<ThemeContextValue>(
     () => ({
       theme,

@@ -1,0 +1,24 @@
+.ach-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.35rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--forum-chip-border, rgba(255, 255, 255, 0.14));
+  background: var(--forum-chip-bg, rgba(255, 255, 255, 0.06));
+  color: var(--page-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.ach-chip__mark {
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.ach-chip__label {
+  max-width: 12rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
