@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /novaya-orbita/
+Disallow: /novaya-orbita/admin
+Disallow: /novaya-orbita/admin/
+Disallow: /novaya-orbita/design-system
+
+Sitemap: https://ubicoft.github.io/novaya-orbita/sitemap.xml

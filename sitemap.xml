@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ubicoft.github.io/novaya-orbita/?lang=ru"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/about</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/about?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/about?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/about?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/directions</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/directions?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/directions?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/directions?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/events</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/events?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/events?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/events?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/projects</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/projects?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/projects?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/projects?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/members</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/members?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/members?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/members?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/partners</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/partners?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/partners?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/partners?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/news</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/news?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/news?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/news?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/contacts</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/contacts?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/contacts?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/contacts?lang=en"/>
+  </url>
+  <url>
+    <loc>https://ubicoft.github.io/novaya-orbita/join</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://ubicoft.github.io/novaya-orbita/join?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="tg" href="https://ubicoft.github.io/novaya-orbita/join?lang=tj"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ubicoft.github.io/novaya-orbita/join?lang=en"/>
+  </url>
+</urlset>
