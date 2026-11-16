@@ -1,0 +1,147 @@
+// F2 foundation schema — auth, profiles, RBAC, categories.
+// Topics/posts expand in F3; moderation entities in F4.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum GlobalRole {
+  FOUNDER
+  CHIEF_ADMIN
+  ADMIN
+  MODERATOR
+  DIRECTION_LEAD
+  PROJECT_COORDINATOR
+  MEMBER
+  NEWCOMER
+  GUEST
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  emailVerifiedAt DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  bannedUntil  DateTime?
+
+  profile      Profile?
+  sessions     Session[]
+  roles        UserRole[]
+  sectionRoles SectionRole[]
+  auditActs    AuditLog[] @relation("AuditActor")
+}
+
+model Profile {
+  userId           String   @id
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayName      String
+  avatarUrl        String?
+  university       String?
+  country          String?
+  city             String?
+  officeTitle      String?
+  direction        String?
+  membershipStatus String?
+  localeHint       String?
+  reputation       Int      @default(0)
+  postCount        Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  ipHint    String?
+  userAgent String?
+}
+
+model Role {
+  id          String           @id @default(cuid())
+  key         GlobalRole       @unique
+  label       String
+  permissions RolePermission[]
+  users       UserRole[]
+}
+
+model Permission {
+  id    String @id @default(cuid())
+  key   String @unique
+  label String
+  roles RolePermission[]
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
+model UserRole {
+  userId     String
+  roleId     String
+  assignedAt DateTime @default(now())
+  assignedBy String?
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, roleId])
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  sortOrder   Int       @default(0)
+  icon        String?
+  sections    Section[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Section {
+  id          String   @id @default(cuid())
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  slug        String
+  sortOrder   Int      @default(0)
+  isPublic    Boolean  @default(true)
+  roles       SectionRole[]
+
+  @@unique([categoryId, slug])
+}
+
+/// Per-section override: e.g. moderator only in one subsection.
+model SectionRole {
+  id        String     @id @default(cuid())
+  userId    String
+  sectionId String
+  roleKey   GlobalRole
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  section   Section    @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sectionId, roleKey])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actor     User?    @relation("AuditActor", fields: [actorId], references: [id], onDelete: SetNull)
+  action    String
+  target    String?
+  metaJson  String?
+  createdAt DateTime @default(now())
+}

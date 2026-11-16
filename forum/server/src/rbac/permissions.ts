@@ -1,0 +1,133 @@
+/** Atomic permissions — checked on the server for every mutating route. */
+
+export const PERMISSIONS = [
+  "section.read",
+  "section.post",
+  "topic.create",
+  "topic.pin",
+  "topic.lock",
+  "topic.move",
+  "post.edit_own",
+  "post.delete_own",
+  "post.delete_mod",
+  "reaction.use",
+  "poll.create",
+  "poll.vote",
+  "attachment.upload",
+  "dm.send",
+  "report.create",
+  "mod.queue",
+  "mod.warn",
+  "mod.temp_ban",
+  "user.role.assign",
+  "category.manage",
+  "forum.settings",
+  "audit.read",
+  "project.workspace.manage",
+] as const;
+
+export type PermissionKey = (typeof PERMISSIONS)[number];
+
+export const ROLE_DEFAULTS: Record<
+  | "FOUNDER"
+  | "CHIEF_ADMIN"
+  | "ADMIN"
+  | "MODERATOR"
+  | "DIRECTION_LEAD"
+  | "PROJECT_COORDINATOR"
+  | "MEMBER"
+  | "NEWCOMER"
+  | "GUEST",
+  PermissionKey[]
+> = {
+  FOUNDER: [...PERMISSIONS],
+  CHIEF_ADMIN: [...PERMISSIONS],
+  ADMIN: [
+    "section.read",
+    "section.post",
+    "topic.create",
+    "topic.pin",
+    "topic.lock",
+    "topic.move",
+    "post.edit_own",
+    "post.delete_own",
+    "post.delete_mod",
+    "reaction.use",
+    "poll.create",
+    "poll.vote",
+    "attachment.upload",
+    "dm.send",
+    "report.create",
+    "mod.queue",
+    "mod.warn",
+    "mod.temp_ban",
+    "category.manage",
+    "audit.read",
+  ],
+  MODERATOR: [
+    "section.read",
+    "section.post",
+    "topic.create",
+    "topic.move",
+    "post.edit_own",
+    "post.delete_own",
+    "post.delete_mod",
+    "reaction.use",
+    "poll.vote",
+    "dm.send",
+    "report.create",
+    "mod.queue",
+    "mod.warn",
+    "mod.temp_ban",
+  ],
+  DIRECTION_LEAD: [
+    "section.read",
+    "section.post",
+    "topic.create",
+    "topic.pin",
+    "post.edit_own",
+    "post.delete_own",
+    "reaction.use",
+    "poll.create",
+    "poll.vote",
+    "attachment.upload",
+    "dm.send",
+    "report.create",
+  ],
+  PROJECT_COORDINATOR: [
+    "section.read",
+    "section.post",
+    "topic.create",
+    "post.edit_own",
+    "post.delete_own",
+    "reaction.use",
+    "poll.create",
+    "poll.vote",
+    "attachment.upload",
+    "dm.send",
+    "report.create",
+    "project.workspace.manage",
+  ],
+  MEMBER: [
+    "section.read",
+    "section.post",
+    "topic.create",
+    "post.edit_own",
+    "post.delete_own",
+    "reaction.use",
+    "poll.create",
+    "poll.vote",
+    "attachment.upload",
+    "dm.send",
+    "report.create",
+  ],
+  NEWCOMER: [
+    "section.read",
+    "section.post",
+    "post.edit_own",
+    "reaction.use",
+    "poll.vote",
+    "report.create",
+  ],
+  GUEST: ["section.read"],
+};

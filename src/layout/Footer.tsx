@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BrandLogo } from "../components/BrandLogo/BrandLogo";
-import { ALL_NAV, ROUTES, withLang } from "../i18n";
+import { ALL_NAV, FORUM_URL, ROUTES, withLang, type NavKey } from "../i18n";
 import { useLocale } from "../i18n/LocaleProvider";
 
 export function Footer() {
@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   const quick = ALL_NAV.filter((key) =>
-    ["about", "directions", "events", "projects", "join"].includes(key),
+    ["about", "directions", "events", "projects", "forum", "join"].includes(key),
   );
 
   return (
@@ -25,11 +25,21 @@ export function Footer() {
           <div>
             <h2 className="site-footer__heading">{t.footer.quickLinks}</h2>
             <nav className="site-footer__links" aria-label={t.footer.quickLinks}>
-              {quick.map((key) => (
-                <Link key={key} className="site-footer__link" to={withLang(ROUTES[key], locale)}>
-                  {t.nav[key]}
-                </Link>
-              ))}
+              {quick.map((key) =>
+                key === "forum" ? (
+                  <a key={key} className="site-footer__link" href={FORUM_URL} rel="noopener noreferrer">
+                    {t.nav.forum}
+                  </a>
+                ) : (
+                  <Link
+                    key={key}
+                    className="site-footer__link"
+                    to={withLang(ROUTES[key as Exclude<NavKey, "forum">], locale)}
+                  >
+                    {t.nav[key]}
+                  </Link>
+                ),
+              )}
             </nav>
           </div>
 

@@ -11,6 +11,7 @@ export const en: Dictionary = {
     directions: "Directions",
     events: "Events",
     projects: "Projects",
+    forum: "Forum",
     members: "Team",
     partners: "Partners",
     news: "News",
@@ -402,6 +403,10 @@ export const en: Dictionary = {
     projects: {
       title: "Projects",
       description: "Initiatives and projects by members.",
+    },
+    forum: {
+      title: "Forum",
+      description: "Community space for discussion and joint work.",
     },
     members: {
       title: "Association team",

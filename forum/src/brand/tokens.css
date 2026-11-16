@@ -1,0 +1,308 @@
+/**
+ * Новая Орбита — Design Tokens
+ * Brand: modernity, authority, intellect, unity, ambition
+ * Palette: deep navy · saturated blue · cyan accent · white · neutrals
+ */
+
+:root {
+  /* ─── Navy scale ─── */
+  --color-navy-50: #e8eef7;
+  --color-navy-100: #c5d3ea;
+  --color-navy-200: #9bb3d6;
+  --color-navy-300: #6e90bf;
+  --color-navy-400: #456fa8;
+  --color-navy-500: #2a528c;
+  --color-navy-600: #1e3f72;
+  --color-navy-700: #152f57;
+  --color-navy-800: #0f2140;
+  --color-navy-900: #0a1628;
+  --color-navy-950: #060e1a;
+
+  /* ─── Blue scale ─── */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  /* ─── Cyan accent scale ─── */
+  --color-cyan-50: #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+  --color-cyan-950: #083344;
+
+  /* ─── Neutral / white scale ─── */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* ─── Semantic: brand ─── */
+  --color-brand-primary: var(--color-navy-900);
+  --color-brand-secondary: var(--color-blue-600);
+  --color-brand-accent: var(--color-cyan-500);
+  --color-brand-on-primary: var(--color-neutral-0);
+  --color-brand-on-secondary: var(--color-neutral-0);
+  --color-brand-on-accent: var(--color-navy-950);
+
+  /* ─── Semantic: surfaces ─── */
+  --color-surface-page: var(--color-neutral-0);
+  --color-surface-subtle: var(--color-neutral-50);
+  --color-surface-muted: var(--color-neutral-100);
+  --color-surface-raised: var(--color-neutral-0);
+  --color-surface-sunken: var(--color-neutral-100);
+  --color-surface-inverse: var(--color-navy-900);
+  --color-surface-overlay: rgba(10, 22, 40, 0.56);
+  --color-surface-card: var(--color-neutral-0);
+  --color-surface-card-hover: var(--color-neutral-50);
+
+  /* ─── Semantic: text ─── */
+  --color-text-primary: var(--color-navy-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary: var(--color-neutral-500);
+  --color-text-disabled: var(--color-neutral-400);
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-link: var(--color-blue-700);
+  --color-text-link-hover: var(--color-blue-800);
+  --color-text-accent: var(--color-cyan-700);
+
+  /* ─── Semantic: borders ─── */
+  --color-border-subtle: var(--color-neutral-200);
+  --color-border-default: var(--color-neutral-300);
+  --color-border-strong: var(--color-neutral-400);
+  --color-border-focus: var(--color-blue-500);
+  --color-border-inverse: rgba(255, 255, 255, 0.18);
+
+  /* ─── Semantic: buttons ─── */
+  --color-btn-primary-bg: var(--color-navy-900);
+  --color-btn-primary-bg-hover: var(--color-navy-800);
+  --color-btn-primary-bg-active: var(--color-navy-950);
+  --color-btn-primary-text: var(--color-neutral-0);
+  --color-btn-primary-border: var(--color-navy-900);
+
+  --color-btn-secondary-bg: transparent;
+  --color-btn-secondary-bg-hover: var(--color-navy-50);
+  --color-btn-secondary-bg-active: var(--color-navy-100);
+  --color-btn-secondary-text: var(--color-navy-900);
+  --color-btn-secondary-border: var(--color-navy-700);
+
+  --color-btn-disabled-bg: var(--color-neutral-100);
+  --color-btn-disabled-text: var(--color-neutral-400);
+  --color-btn-disabled-border: var(--color-neutral-200);
+
+  /* ─── Semantic: feedback ─── */
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-500: #10b981;
+  --color-success-700: #047857;
+  --color-success-bg: var(--color-success-50);
+  --color-success-border: #6ee7b7;
+  --color-success-text: var(--color-success-700);
+
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-700: #b45309;
+  --color-warning-bg: var(--color-warning-50);
+  --color-warning-border: #fcd34d;
+  --color-warning-text: var(--color-warning-700);
+
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-500: #ef4444;
+  --color-error-700: #b91c1c;
+  --color-error-bg: var(--color-error-50);
+  --color-error-border: #fca5a5;
+  --color-error-text: var(--color-error-700);
+
+  --color-info-50: #eff6ff;
+  --color-info-100: #dbeafe;
+  --color-info-500: var(--color-blue-500);
+  --color-info-700: var(--color-blue-700);
+  --color-info-bg: var(--color-info-50);
+  --color-info-border: var(--color-blue-200);
+  --color-info-text: var(--color-info-700);
+
+  /* ─── Spacing (4px base) ─── */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-20: 5rem; /* 80 */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 */
+
+  /* ─── Radii ─── */
+  --radius-none: 0;
+  --radius-sm: 0.25rem; /* 4 */
+  --radius-md: 0.5rem; /* 8 */
+  --radius-lg: 0.75rem; /* 12 */
+  --radius-xl: 1rem; /* 16 */
+  --radius-2xl: 1.5rem; /* 24 */
+  --radius-full: 9999px;
+
+  /* ─── Shadows ─── */
+  --shadow-xs: 0 1px 2px rgba(10, 22, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.08), 0 1px 2px rgba(10, 22, 40, 0.04);
+  --shadow-md: 0 4px 12px rgba(10, 22, 40, 0.08), 0 2px 4px rgba(10, 22, 40, 0.04);
+  --shadow-lg: 0 12px 28px rgba(10, 22, 40, 0.1), 0 4px 8px rgba(10, 22, 40, 0.04);
+  --shadow-xl: 0 20px 48px rgba(10, 22, 40, 0.14), 0 8px 16px rgba(10, 22, 40, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.35);
+  --shadow-focus-error: 0 0 0 3px rgba(239, 68, 68, 0.3);
+
+  /* ─── Typography families ─── */
+  /* Manrope: display/headings — modern geometric, full Cyrillic */
+  /* Source Sans 3: body/UI — verified RU + Tajik (ҒӢҚӮҲҶ) + Latin */
+  --font-display: "Manrope", "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Source Sans 3", "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Liberation Mono", monospace;
+
+  /* ─── Type scale ─── */
+  --text-display-size: clamp(2.5rem, 5vw, 3.75rem);
+  --text-display-line: 1.1;
+  --text-display-weight: 700;
+  --text-display-tracking: -0.02em;
+
+  --text-h1-size: clamp(2rem, 3.5vw, 2.75rem);
+  --text-h1-line: 1.15;
+  --text-h1-weight: 700;
+  --text-h1-tracking: -0.015em;
+
+  --text-h2-size: clamp(1.5rem, 2.5vw, 2rem);
+  --text-h2-line: 1.2;
+  --text-h2-weight: 700;
+  --text-h2-tracking: -0.01em;
+
+  --text-h3-size: clamp(1.25rem, 2vw, 1.5rem);
+  --text-h3-line: 1.3;
+  --text-h3-weight: 600;
+  --text-h3-tracking: -0.005em;
+
+  --text-h4-size: 1.125rem;
+  --text-h4-line: 1.35;
+  --text-h4-weight: 600;
+  --text-h4-tracking: 0;
+
+  --text-body-lg-size: 1.125rem;
+  --text-body-lg-line: 1.65;
+  --text-body-lg-weight: 400;
+
+  --text-body-size: 1rem;
+  --text-body-line: 1.6;
+  --text-body-weight: 400;
+
+  --text-body-sm-size: 0.875rem;
+  --text-body-sm-line: 1.55;
+  --text-body-sm-weight: 400;
+
+  --text-nav-size: 0.9375rem;
+  --text-nav-line: 1.4;
+  --text-nav-weight: 500;
+  --text-nav-tracking: 0.01em;
+
+  --text-button-size: 0.9375rem;
+  --text-button-line: 1.2;
+  --text-button-weight: 600;
+  --text-button-tracking: 0.01em;
+
+  --text-caption-size: 0.75rem;
+  --text-caption-line: 1.4;
+  --text-caption-weight: 500;
+  --text-caption-tracking: 0.02em;
+
+  --text-label-size: 0.8125rem;
+  --text-label-line: 1.3;
+  --text-label-weight: 600;
+  --text-label-tracking: 0.02em;
+
+  /* ─── Breakpoints (reference; use in media queries) ─── */
+  /* phone: 0–639 · tablet: 640–1023 · desktop: 1024+ */
+  --bp-phone: 640px;
+  --bp-tablet: 1024px;
+  --bp-desktop: 1280px;
+  --bp-wide: 1440px;
+
+  /* ─── Layout ─── */
+  --container-max: 72rem; /* 1152 */
+  --container-wide: 80rem; /* 1280 */
+  --container-narrow: 42rem;
+  --header-height: 4.5rem;
+  --header-height-mobile: 3.75rem;
+
+  /* ─── Motion ─── */
+  --duration-instant: 0ms;
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --duration-slower: 480ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.2, 0.64, 1);
+
+  --motion-fade: opacity var(--duration-base) var(--ease-standard);
+  --motion-transform: transform var(--duration-base) var(--ease-standard);
+  --motion-color: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+  --motion-shadow: box-shadow var(--duration-base) var(--ease-standard);
+  --motion-interactive: var(--motion-color), var(--motion-shadow),
+    var(--motion-transform);
+
+  /* ─── Z-index ─── */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+    --duration-slower: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

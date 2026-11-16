@@ -1,0 +1,88 @@
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.snow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(224, 242, 254, 0.4) 0 1.2px, transparent 1.8px);
+  background-size: 28px 36px, 44px 52px;
+  background-position: 0 0, 14px 18px;
+  opacity: 0.26;
+  animation: snow-dust 22s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow-dust {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(52px);
+  }
+}
+
+
+.snow__flake {
+  position: absolute;
+  top: -16px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 32% 28%,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.75) 45%,
+    rgba(186, 230, 253, 0.35) 100%
+  );
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
+  animation-name: snow-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.snow__layer--far {
+  z-index: 1;
+}
+
+.snow__layer--mid {
+  z-index: 2;
+}
+
+.snow__layer--near {
+  z-index: 3;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--drift, 24px), 112vh, 0) rotate(160deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snow {
+    /* Static soft snowfall field instead of falling flakes */
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.6) 0 1.2px, transparent 1.8px),
+      radial-gradient(circle, rgba(255, 255, 255, 0.4) 0 1.1px, transparent 1.7px),
+      radial-gradient(circle, rgba(224, 242, 254, 0.45) 0 1px, transparent 1.6px);
+    background-size: 36px 48px, 56px 70px, 28px 40px;
+    background-position: 0 0, 16px 20px, 24px 8px;
+    opacity: 0.7;
+  }
+
+  .snow::before,
+  .snow__flake {
+    display: none;
+  }
+}

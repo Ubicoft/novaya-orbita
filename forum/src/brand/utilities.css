@@ -1,0 +1,208 @@
+/* Soft orbital brand accent — geometric, institutional, not sci-fi */
+.orbital-accent {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  pointer-events: none;
+}
+
+.orbital-accent--soft {
+  border-color: rgba(37, 99, 235, 0.14);
+}
+
+.orbital-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.12) 0%,
+    rgba(37, 99, 235, 0.06) 42%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.ds-section {
+  padding-block: var(--space-12);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.ds-section:last-child {
+  border-bottom: none;
+}
+
+.ds-section__header {
+  margin-bottom: var(--space-8);
+  max-width: 40rem;
+}
+
+.ds-section__eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  color: var(--color-cyan-700);
+}
+
+.ds-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.ds-grid--2 {
+  grid-template-columns: 1fr;
+}
+
+.ds-grid--3 {
+  grid-template-columns: 1fr;
+}
+
+.ds-grid--4 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.ds-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ds-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ds-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--space-3);
+}
+
+.ds-swatch {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-raised);
+}
+
+.ds-swatch__chip {
+  height: 4.5rem;
+}
+
+.ds-swatch__meta {
+  padding: var(--space-2) var(--space-3);
+}
+
+.ds-swatch__name {
+  font-size: var(--text-caption-size);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.ds-swatch__value {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-tertiary);
+}
+
+.ds-token-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body-sm-size);
+}
+
+.ds-token-table th,
+.ds-token-table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  vertical-align: top;
+}
+
+.ds-token-table th {
+  font-size: var(--text-caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+}
+
+.ds-type-sample {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.ds-type-sample:last-child {
+  border-bottom: none;
+}
+
+.ds-type-meta {
+  margin-top: var(--space-1);
+  color: var(--color-text-tertiary);
+}
+
+.ds-dark-panel {
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+.ds-demo-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  padding: var(--space-3);
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  position: sticky;
+  top: var(--space-3);
+  z-index: var(--z-sticky);
+}
+
+.ds-demo-nav a {
+  font-size: var(--text-caption-size);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: var(--motion-color);
+}
+
+.ds-demo-nav a:hover {
+  color: var(--color-text-primary);
+  background: var(--color-neutral-0);
+}
+
+@media (min-width: 640px) {
+  .ds-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ds-grid--3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ds-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ds-section {
+    padding-block: var(--space-16);
+  }
+}

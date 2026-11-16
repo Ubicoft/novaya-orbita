@@ -30,6 +30,7 @@ export const PRIMARY_NAV: NavKey[] = [
   "directions",
   "events",
   "projects",
+  "forum",
 ];
 
 export const SECONDARY_NAV: NavKey[] = [
@@ -45,7 +46,10 @@ export const ALL_NAV: NavKey[] = [
   "join",
 ];
 
-export const ROUTES: Record<NavKey, string> = {
+/** Sibling forum product (not a site route). */
+export const FORUM_URL = "https://ubicoft.github.io/novaya-orbita/forum/";
+
+export const ROUTES: Record<Exclude<NavKey, "forum">, string> = {
   home: "/",
   about: "/about",
   directions: "/directions",
